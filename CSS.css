@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    user-select: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgb(43, 43, 43), rgb(19, 19, 19));
+}
+
+.library{
+    background-color: rgb(14, 14, 14);
+    position: fixed;
+    left: 0;
+    height: 91%;
+    width: 10%;
+    border: 2px solid, black;
+    display: grid;
+    overflow: auto;
+    z-index: 2;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(100, 1fr);
+}
+
+.playing-view{
+    background-color: rgb(14, 14, 14);
+    position: fixed;
+    right: 0;
+    height: 91%;
+    width: 15%;
+    border: 2px solid, black;
+    overflow: auto;
+    z-index: 2;
+}
+
+#view-img{
+    width: 90%;
+    max-height: 100%;
+    border-radius: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    display: block;
+}
+
+.artist-img{
+    width: 80%;
+    max-height: 100%;
+    border-radius: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    display: block;
+}
+
+.playing-view p{
+    margin-top: 2%;
+    text-align: center;
+    white-space: normal;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 2.5vh;
+}
+
+.playing-view h1{
+    margin-top: 5%;
+    text-align: center;
+    white-space: normal;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 3vh;
+    color: white;
+}
+
+.library img{
+    justify-self: center;
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.album-title{
+    background-color: rgb(19, 19, 19);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 25%;
+    width: 100%;
+    align-items: center;
+    border: 2px solid, black;
+    display: inline-flex;
+    z-index: 1;
+}
+
+.music-player{
+    background-color: rgb(19, 19, 19);
+    position: fixed;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    align-items: center;
+    border: 2px solid, black;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+}
+
+.songs-list{
+    transform: translateY(38%);
+    height: 65%;
+    width: 100%;
+    display: grid;
+    overflow: auto;
+    z-index: 0;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.songs-list::-webkit-scrollbar{
+    display: none;
+}
+
+.library::-webkit-scrollbar{
+    display: none;
+}
+
+.playing-view::-webkit-scrollbar{
+    display: none;
+}
+
+.songs-list div{
+    position: relative;
+    color: white;
+    height: 75px;
+    width: 100%;
+    align-items: center;
+    display: inline-flex;
+    padding-left: 12%;
+    font-size: 20px;
+    word-wrap: break-word;
+}
+
+.songs-list div p{
+    position: absolute;
+    padding-left: 65px; 
+}
+
+.album-info h1{
+    font-size: 6vh;
+    color: white;
+    bottom: 80%;
+    margin-left: 15px;
+}
+
+.setplay h1{
+    font-size: 60px;
+}
+
+.album-info p{
+    font-size: 4vh;
+    color: rgb(60, 60, 60);
+    margin-left: 15px;
+}
+
+.album-img{
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5%;
+    box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.5);
+    margin-left: 11%;
+}
+
+.song-info{
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.song-img{
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10%;
+    position: relative;
+    align-self: center;
+    left: 0.5%;
+}
+
+.music-player h1{
+    font-size: 2.5vh;
+    font-weight: 400;
+    color: white;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.music-player p{
+    font-size: 2vh;
+    color: rgb(60, 60, 60);
+    margin-left: 25px;
+}
+
+.controls{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 5px
+}
+
+.controls img{
+    width: 90%;
+    height: 90%;
+}
+
+.controls div{
+    width: 7vh;
+    height: 7vh;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#shuffler, #repeater{
+    width: 5vh;
+    height: 5vh;
+}
+
+.controls div:nth-child(3){
+    background-color: white;
+}
+
+.inverted {
+    filter: invert()
+}

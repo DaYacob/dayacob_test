@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> DaYacob Music</title>
+        <link rel="stylesheet" href="CSS.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="library">
+                <img onclick="setAlbum(0)" src="./Photos/Almighty So 2.png">
+                <img onclick="setAlbum(1)" src="./Photos/Monster.png">
+                <img onclick="setAlbum(4)" src="./Photos/Days Before Rodeo.png">
+                <img onclick="setAlbum(2)" src="./Photos/Save Me.png">
+                <img onclick="setAlbum(3)" src="./Photos/Pick Up The Phone.png">
+            </div>
+            <div class="playing-view">
+                <img src="./Photos/Almighty So 2.png" class=song-img id="view-img">
+                <h1 class="name">Almighty (Intro)</h1>
+                <p class="feature">Chief Keef</p>
+                <img src="./Photos/Chief Keef.png" class=artist-img>
+            </div>
+            <div class="album-title">
+                <img src="./Photos/Almighty So 2.png" class=album-img>
+                <div class="album-info">
+                    <h1 id="album-name">Almighty So 2</h1>
+                    <p id="album-desc"> Chief Keef • Album • 2024</p>
+                </div>
+            </div>
+            <div class="songs-list">
+            </div>
+            <div class="music-player">
+                <img src="./Photos/Almighty So 2.png" class=song-img>
+                <div class="song-info">
+                    <h1 class="name">Almighty (Intro)</h1>
+                    <p class="feature">Chief Keef</p>
+                </div>
+                <div class="controls">
+                    <div onclick="shuffle()"><img src="./Photos/Shuffle.png" id="shuffler"></div>
+                    <div onclick="previousSong()"><img src="./Photos/Rewind.png"></div>
+                    <div onclick="playPause()"><img src="./Photos/Play.png" id="ctrlIcon"></div>
+                    <div onclick="nextSong()"><img src="./Photos/Skip.png"></div>
+                    <div onclick="songRepeat()"><img src="./Photos/Repeat.png" id="repeater"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const ctrlIcon = document.getElementById("ctrlIcon");
+        const name = document.querySelectorAll(".name");
+        const feature = document.querySelectorAll(".feature");
+        const shuffler = document.getElementById("shuffler");
+        const repeater = document.getElementById("repeater");
+        const songsList = document.querySelector(".songs-list");
+        const current = document.querySelectorAll(".song-img");
+        const artist = document.querySelectorAll(".artist-img");
+
+        const image = document.querySelector(".album-img");
+        const title = document.getElementById("album-name");
+        const desc = document.getElementById("album-desc");
+
+        let state = true;
+        let shuffled = false;
+        let repeated = false;
+        let order = 0;
+
+        const almighty_so_image = "./Photos/Almighty So 2.png";
+        const monster_image = "./Photos/Monster.png";
+        const hatful_of_hollow_image = "./Photos/Hatful of Hollow.png";
+        const days_before_rodeo_image = "./Photos/Days Before Rodeo.png"
+        const save_me_image = "./Photos/Save Me.png";
+        const pick_up_the_phone_image = "./Photos/Pick Up The Phone.png";
+
+        const chief_keef = "./Photos/Chief Keef.png"
+        const travis_scott = "./Photos/Travis Scott.png"
+        const future = "./Photos/Future.png"
+        const young_thug = "./Photos/Young Thug.png"
+
+        const play_button = "./Photos/Play.png"
+        const pause_button = "./Photos/Pause.png"
+
+        // Song, name, artist and features, liked, image
+
+        let all = [
+            [
+                ["./Audio/Almighty (Intro).mp3", "Almighty (Intro)", "Chief Keef", almighty_so_image],
+                ["./Audio/Neph Nem.mp3", "Neph Nem", "Chief Keef (feat. Ballout and G Herbo)", almighty_so_image],
+                ["./Audio/Treat Myself.mp3", "Treat Myself", "Chief Keef", almighty_so_image],
+                ["./Audio/Jesus Skit.mp3", "Jesus Skit", "Chief Keef", almighty_so_image],
+                ["./Audio/Jesus.mp3", "Jesus", "Chief Keef (feat. Lil Gnar)", almighty_so_image],
+                ["./Audio/Too Trim.mp3", "Too Trim", "Chief Keef", almighty_so_image],
+                ["./Audio/Runner.mp3", "Runner", "Chief Keef", almighty_so_image],
+                ["./Audio/Banded Up.mp3", "Banded Up", "Chief Keef (feat. Tierra Whack)", almighty_so_image],
+                ["./Audio/Grape Trees.mp3", "Grape Trees", "Chief Keef (feat. Sexyy Red)", almighty_so_image],
+                ["./Audio/1,2,3.mp3", "1,2,3", "Chief Keef", almighty_so_image],
+                ["./Audio/Drifting Away.mp3", "Drifting Away", "Chief Keef", almighty_so_image],
+                ["./Audio/Never Fly Here.mp3", "Never Fly Here", "Chief Keef (feat. Quavo)", almighty_so_image],
+                ["./Audio/Prince Charming.mp3", "Prince Charming", "Chief Keef", almighty_so_image],
+                ["./Audio/Believe.mp3", "Believe", "Chief Keef", almighty_so_image],
+                ["./Audio/Tony Montana Flow.mp3", "Tony Montana Flow", "Chief Keef", almighty_so_image],
+                ["./Audio/I'm Tryna Sleep.mp3", "I'm Tryna Sleep", "Chief Keef", almighty_so_image],
+            ],
+            [
+                ["./Audio/Radical.mp3", "Radical", "Future", monster_image],
+                ["./Audio/Monster.mp3", "Monster", "Future", monster_image],
+                ["./Audio/Throw Away.mp3", "Throw Away", "Future", monster_image],
+                ["./Audio/After That.mp3", "After That", "Future (feat. Lil Wayne)", monster_image],
+                ["./Audio/My Savages.mp3", "My Savages", "Future", monster_image],
+                ["./Audio/2Pac.mp3", "2Pac", "Future", monster_image],
+                ["./Audio/Gangland.mp3", "Gangland", "Future", monster_image],
+                ["./Audio/Fetti.mp3", "Fetti", "Future", monster_image],
+                ["./Audio/Hardly.mp3", "Hardly", "Future", monster_image],
+                ["./Audio/Wesley Presley.mp3", "Wesley Presley", "Future", monster_image],
+                ["./Audio/Showed Up.mp3", "Showed Up", "Future", monster_image],
+                ["./Audio/Mad Luv.mp3", "Mad Luv", "Future", monster_image],
+                ["./Audio/Codeine Crazy.mp3", "Codeine Crazy", "Future", monster_image],
+            ],
+            [
+                ["./Audio/Save Me.mp3", "Save Me", "Chief Keef", save_me_image],
+            ],
+            [
+                ["./Audio/Pick Up The Phone.mp3", "Pick Up The Phone", "Young Thug, Travis Scott (feat. Quavo)", pick_up_the_phone_image],
+            ],
+            [
+                ["./Audio/The Prayer.mp3", "The Prayer", "Travis Scott", days_before_rodeo_image],
+                ["./Audio/Mamacita.mp3", "Mamacita", "Travis Scott (feat. Rich Homie Quan and Young Thug)", days_before_rodeo_image],
+                ["./Audio/Quintana Pt 2.mp3", "Quintana Pt. 2", "Travis Scott (feat. T.I.)", days_before_rodeo_image],
+                ["./Audio/Drugs You Should Try It.mp3", "Drugs You Should Try It", "Travis Scott", days_before_rodeo_image],
+                ["./Audio/Don't Play.mp3", "Don't Play", "Travis Scott (feat. The 1975 and Big Sean)", days_before_rodeo_image],
+                ["./Audio/Skyfall.mp3", "Skyfall", "Travis Scott (feat. Young Thug)", days_before_rodeo_image],
+                ["./Audio/Zombies.mp3", "Zombies", "Travis Scott", days_before_rodeo_image],
+                ["./Audio/Sloppy Toppy.mp3", "Sloppy Toppy", "Travis Scott (feat. Migos and Peewee Longway)", days_before_rodeo_image],
+                ["./Audio/Basement Freestyle.mp3", "Basement Freestyle", "Travis Scott", days_before_rodeo_image],
+                ["./Audio/Backyard.mp3", "Backyard", "Travis Scott", days_before_rodeo_image],
+                ["./Audio/Grey.mp3", "Grey", "Travis Scott", days_before_rodeo_image],
+                ["./Audio/BACC.mp3", "BACC", "Travis Scott", days_before_rodeo_image],
+            ],
+        ]
+
+        let info = [
+            ["Almighty So 2", "Chief Keef • Album • 2024", almighty_so_image, chief_keef],
+            ["Monster", "Future • Album • 2014", monster_image, future],
+            ["Save Me", "Chief Keef • Single • 2014", save_me_image, chief_keef],
+            ["Pick Up The Phone", "Young Thug, Travis Scott • Single • 2016", pick_up_the_phone_image, young_thug],
+            ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image, travis_scott],
+        ]
+
+        let queue = []
+
+        let listened = []
+
+        let index = all[0];
+        let list = index;
+
+        for (let i = 0; i < all.length; i++){
+            for (let j = 0; j < all[i].length; j++){
+                const newAudio = new Audio(all[i][j][0]);
+                newAudio.preload = "auto";
+                all[i][j][0] = newAudio;
+                all[i][j][0].volume = 0.2;
+
+                const newImage = new Image(all[i][j][3])
+            }
+        }
+
+        let currentSong = index[0][0];
+        let currentInfo = info[0];
+
+        function findNext(value){
+            for (let i = 0; i < all.length; i++){
+                for (let j = 0; j < all[i].length; j++){
+                    if (all[i][j][0] == value){
+                        return i;
+                    }
+                }
+            }
+        }
+
+        function finishSong(){
+            listened.push(currentSong)
+            currentSong.addEventListener("ended", function() {
+                if (repeated == false){
+                    skip();
+                }
+                updatePlayer()
+            })
+        }
+
+        function updatePlayer(change){
+            if (change == true){
+                index = list;
+            }
+            else{
+                index = all[findNext(currentSong)];
+            }
+
+            currentSong.pause();
+            currentSong.currentTime = 0;
+            currentSong = index[order][0];
+            currentSong.play();
+
+            if (!listened.includes(currentSong)){
+                finishSong();
+            }
+
+            name.forEach(x => {
+                x.innerHTML = index[order][1];
+            })
+            feature.forEach(x => {
+                x.innerHTML = index[order][2];
+            })
+            current.forEach(x => {
+                x.src = index[order][3];
+            })
+            artist.forEach(x => {
+                x.src = currentInfo[3];
+            })
+
+            resetColours();
+            checkColour();
+            removeRepetition();
+
+            state = false;
+            ctrlIcon.src=pause_button;
+        }
+
+        function updateSongs(){
+            while (songsList.firstChild) {
+                songsList.removeChild(songsList.firstChild)
+            }
+
+            for (let i = 0; i < list.length; i++){
+                const newSong = document.createElement("div");
+                newSong.classList.add("setplay");
+                newSong.innerHTML = i+1;
+
+                image.src = currentInfo[2];
+                title.innerHTML = currentInfo[0];
+                desc.innerHTML = currentInfo[1];
+            
+                const newP = document.createElement("p");
+                newP.innerHTML = `${list[i][1]} <br> ${list[i][2]}`;
+
+                newSong.appendChild(newP)
+                songsList.appendChild(newSong)
+            };
+        }
+
+        function setAlbum(setNum){
+            songsList.scrollTo(0, 0)
+            list = all[setNum];
+            currentInfo = info[setNum];
+            updateSongs();
+            addButton();
+            checkColour();
+        }
+
+        function resetColours() {
+            Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
+                button.style.color = "white";
+            });
+        };
+
+        function checkColour() {
+            Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
+                const pos = parseInt(button.innerHTML) - 1
+                if (order > -1){
+                    if (list[pos][0] == currentSong){
+                        button.style.color = "limegreen";
+                    };
+                }
+            });
+        };
+
+        function addButton(){
+            Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
+                const pos = parseInt(button.innerHTML) - 1
+                button.addEventListener("click", function() {
+                    if (list[pos][0] != currentSong) {
+                        order = pos
+                        updatePlayer(true);
+                    }
+                    else if (state == true) {
+                        checkColour();
+                        currentSong.play();
+                        state = false;
+                        ctrlIcon.src=pause_button;
+                    }
+                    else if (state == false) {
+                        checkColour()
+                        currentSong.pause();
+                        ctrlIcon.src=play_button;
+                        state = true;
+                    }
+                })
+                button.addEventListener("mouseover", function() {
+                    if (list[pos][0] != currentSong) {
+                        button.style.color = "grey"
+                    }
+                })
+                button.addEventListener("mouseleave", function() {
+                    if (list[pos][0] != currentSong) {
+                        button.style.color = "white"
+                    }
+                })
+            })
+        }
+
+        function number(){
+            let num = Math.floor(Math.random() * list.length);
+
+            if (list.length > 1){
+                while (num == order){
+                    num = Math.floor(Math.random() * list.length);
+                }
+                return num
+            }
+            else {
+                return num
+            }
+        }
+
+        function songRepeat(){
+            repeater.classList.toggle('inverted')
+            if (repeated == false){
+                repeated = true;
+            }
+            else {
+                repeated = false;
+            }
+        }
+
+        function shuffle(){
+            shuffler.classList.toggle('inverted')
+            if (shuffled == false){
+                shuffled = true;
+            }
+            else {
+                shuffled = false;
+            }
+        }
+
+        function removeRepetition(){
+            if (repeated == true){
+                repeater.classList.toggle('inverted')
+                repeated = false;
+            }
+        }
+
+        function skip(){
+            if (shuffled == false){
+                if (order == index.length - 1) {
+                    order = 0
+                }
+                else {
+                    order++;
+                }
+            }
+            else {
+                order = number()
+            }
+        }
+
+        function rewind(){
+            if (order == 0){
+                order = index.length - 1;
+            }
+            else {
+                order--;
+            }
+        }
+
+        function playPause(){
+            if (order > -1) {
+                checkColour()
+                if (state === true){
+                    currentSong.play();
+                    ctrlIcon.src=pause_button;
+                    state = false;
+                }
+                else {
+                    currentSong.pause();
+                    ctrlIcon.src=play_button;
+                    state = true;
+                }
+            }
+        }
+
+        function nextSong(){
+            if (order > index.length){
+                order = 0;
+            }
+            else {
+                skip();
+            }
+            updatePlayer(false)
+        }
+
+        function previousSong(){
+            if (order > -1) {
+                if (order > index.length){
+                    order = 0;
+                    resetColours();
+                    checkColour();
+                }
+                else {
+                    rewind();
+                }
+                updatePlayer(false)
+            }
+        }
+
+        document.body.onkeyup = function(event){
+            if (event.key === " ") {
+                playPause()
+            }
+        }
+
+        document.addEventListener("keydown", function(event){
+            if (event.key === " "){
+                event.preventDefault();
+            }
+        });
+
+        finishSong();
+        updateSongs();
+        checkColour();
+        addButton();
+    </script>
+</html>
