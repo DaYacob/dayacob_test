@@ -4,6 +4,7 @@
     <head>
         <title> DaYacob Music</title>
         <link rel="stylesheet" href="CSS.css">
+        <link rel="shortcut icon" href="#">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -14,12 +15,6 @@
                 <img onclick="setAlbum(4)" src="./Photos/Rainbow Bridge 3.png">
                 <img onclick="setAlbum(1)" src="./Photos/Save Me.png">
                 <img onclick="setAlbum(2)" src="./Photos/Pick Up The Phone.png">
-            </div>
-            <div class="playing-view">
-                <img src="./Photos/Monster.png" class=song-img id="view-img">
-                <h1 class="name">Radical</h1>
-                <p class="feature">Future</p>
-                <img src="./Photos/Future.png" class=artist-img>
             </div>
             <div class="album-title">
                 <img src="./Photos/Monster.png" class=album-img>
@@ -55,7 +50,6 @@
         const repeater = document.getElementById("repeater");
         const songsList = document.querySelector(".songs-list");
         const current = document.querySelectorAll(".song-img");
-        const artist = document.querySelectorAll(".artist-img");
 
         const image = document.querySelector(".album-img");
         const title = document.getElementById("album-name");
@@ -71,12 +65,6 @@
         const rainbow_bridge_3_image = "./Photos/Rainbow Bridge 3.png";
         const save_me_image = "./Photos/Save Me.png";
         const pick_up_the_phone_image = "./Photos/Pick Up The Phone.png";
-
-        const chief_keef = "./Photos/Chief Keef.png"
-        const travis_scott = "./Photos/Travis Scott.png"
-        const future = "./Photos/Future.png"
-        const young_thug = "./Photos/Young Thug.png"
-        const sematary = "./Photos/Sematary.png"
 
         const play_button = "./Photos/Play.png"
         const pause_button = "./Photos/Pause.png"
@@ -128,11 +116,11 @@
         ]
 
         let info = [
-            ["Monster", "Future • Album • 2014", monster_image, future],
-            ["Save Me", "Chief Keef • Single • 2014", save_me_image, chief_keef],
-            ["Pick Up The Phone", "Young Thug, Travis Scott • Single • 2016", pick_up_the_phone_image, young_thug],
-            ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image, travis_scott],
-            ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image, sematary],
+            ["Monster", "Future • Album • 2014", monster_image],
+            ["Save Me", "Chief Keef • Single • 2014", save_me_image],
+            ["Pick Up The Phone", "Young Thug, Travis Scott • Single • 2016", pick_up_the_phone_image],
+            ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image],
+            ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image],
         ]
 
         let queue = []
@@ -201,9 +189,6 @@
             })
             current.forEach(x => {
                 x.src = index[order][3];
-            })
-            artist.forEach(x => {
-                x.src = currentInfo[3];
             })
 
             resetColours();
