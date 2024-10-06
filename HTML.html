@@ -9,12 +9,17 @@
     </head>
     <body>
         <div class="container">
+            <div class="top">
+                <div id="search-bar">
+                    <input type="text" id="searching" placeholder="Search Album Names">
+                </div>
+            </div>
             <div class="library">
-                <img onclick="setAlbum(0)" src="./Photos/Monster.png">
-                <img onclick="setAlbum(3)" src="./Photos/Days Before Rodeo.png">
-                <img onclick="setAlbum(4)" src="./Photos/Rainbow Bridge 3.png">
-                <img onclick="setAlbum(1)" src="./Photos/Save Me.png">
-                <img onclick="setAlbum(2)" src="./Photos/Pick Up The Phone.png">
+                <img onclick="setAlbum(0)" src="./Photos/Monster.png" data-id="Monster">
+                <img onclick="setAlbum(3)" src="./Photos/Days Before Rodeo.png" data-id="Days Before Rodeo">
+                <img onclick="setAlbum(4)" src="./Photos/Rainbow Bridge 3.png" data-id="Rainbow Bridge 3">
+                <img onclick="setAlbum(1)" src="./Photos/Save Me.png" data-id="Save Me">
+                <img onclick="setAlbum(2)" src="./Photos/Pick Up The Phone.png" data-id="Pick Up The Phone">
             </div>
             <div class="album-title">
                 <img src="./Photos/Monster.png" class=album-img>
@@ -399,13 +404,39 @@
 
         document.body.onkeyup = function(event){
             if (event.key === " ") {
-                playPause()
+                const activeElement = document.activeElement;
+
+                if (!(activeElement.tagName === 'INPUT' && activeElement.type === 'text') && activeElement.tagName !== 'TEXTAREA') {
+                    playPause()
+                }
             }
         }
 
+        const searchbox = document.getElementById("search-bar");
+        const searching = document.getElementById("searching")
+        const library = document.querySelectorAll(".library img");
+
+        searchbox.addEventListener("input", function(){
+            library.forEach(imagecover => {
+                const identifier = imagecover.getAttribute("data-id").toLowerCase();
+                console.log(identifier)
+                const searchvalue = searching.value.toLowerCase();
+                console.log(searchvalue)
+                if (identifier.includes(searchvalue)) {
+                    imagecover.style.display = "block";
+                } else {
+                    imagecover.style.display = "none";
+                }
+            })
+        })
+
         document.addEventListener("keydown", function(event){
             if (event.key === " "){
-                event.preventDefault();
+               const activeElement = document.activeElement;
+
+                if (!(activeElement.tagName === 'INPUT' && activeElement.type === 'text') && activeElement.tagName !== 'TEXTAREA') {
+                    event.preventDefault();
+                }
             }
         });
 
