@@ -111,6 +111,10 @@
     grid-template-rows: repeat(1000, 1fr);
 }
 
+#search-bar::-webkit-scrollbar{
+    display: none;
+}
+
 .songs-list::-webkit-scrollbar{
     display: none;
 }
