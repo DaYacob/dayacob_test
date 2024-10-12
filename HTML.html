@@ -46,6 +46,10 @@
                     <div onclick="nextSong()"><img src="./Photos/Skip.png"></div>
                     <div onclick="songRepeat()"><img src="./Photos/Repeat.png" id="repeater"></div>
                 </div>
+                <div class="volume">
+                    <div onclick="mute()" id="volume-icon"><img src="./Photos/Volume.png"></div>
+                    <input type="range" id="volume" min="0" max="50" value="50">
+                </div>
             </div>
         </div>
     </body>
@@ -58,6 +62,8 @@
         const repeater = document.getElementById("repeater");
         const songsList = document.querySelector(".songs-list");
         const current = document.querySelectorAll(".song-img");
+        const volumeSlider = document.getElementById("volume");
+        const volumeIcon = document.getElementById("volume-icon");
 
         const image = document.querySelector(".album-img");
         const title = document.getElementById("album-name");
@@ -79,6 +85,8 @@
 
         const play_button = "./Photos/Play.png";
         const pause_button = "./Photos/Pause.png";
+        const volume_button = "./Photos/Volume.png";
+        const mute_button = "./Photos/Mute.png";
 
         // Song, name, artist and features, liked, image
 
@@ -187,7 +195,6 @@
                 const newAudio = new Audio(all[i][j][0]);
                 newAudio.preload = "auto";
                 all[i][j][0] = newAudio;
-                all[i][j][0].volume = 0.2;
 
                 const newImage = new Image(all[i][j][3])
             }
@@ -195,6 +202,16 @@
 
         let currentSong = index[0][0];
         let currentInfo = info[0];
+
+        volumeSlider.addEventListener("input", function(){
+            currentSong.volume = volume.value / 100;
+
+            if (volume.value <= 0){
+                volumeIcon.querySelector("img").src = "./Photos/Mute.png"
+            } else {
+                volumeIcon.querySelector("img").src = "./Photos/Volume.png"
+            }
+        });
 
         function findNext(value){
             for (let i = 0; i < all.length; i++){
@@ -227,6 +244,7 @@
             currentSong.pause();
             currentSong.currentTime = 0;
             currentSong = index[order][0];
+            currentSong.volume = volume.value / 100;
             currentSong.play();
 
             if (!listened.includes(currentSong)){
@@ -355,6 +373,12 @@
             else {
                 repeated = false;
             }
+        }
+
+        function mute(){
+            volume.value = 0;
+            currentSong.volume = volume.value;
+            volumeIcon.querySelector("img").src = mute_button;
         }
 
         function shuffle(){
