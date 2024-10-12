@@ -229,6 +229,7 @@ input[type="range"] {
     border-radius: 5px;
     overflow: hidden;
     background-color: gray;
+    outline: none;
 }
 
 input[type="range"]::-webkit-slider-thumb {
