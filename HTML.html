@@ -19,6 +19,7 @@
                 <img onclick="setAlbum(5)" src="./Photos/DS2.png" identifier="DS2">
                 <img onclick="setAlbum(3)" src="./Photos/Days Before Rodeo.png" identifier="Days Before Rodeo">
                 <img onclick="setAlbum(4)" src="./Photos/Rainbow Bridge 3.png" identifier="Rainbow Bridge 3">
+                <img onclick="setAlbum(9)" src="./Photos/Working On Dying.png" identifier="Working On Dying">
                 <img onclick="setAlbum(8)" src="./Photos/Dedication.png" identifier="Dedication">
                 <img onclick="setAlbum(1)" src="./Photos/Save Me.png" identifier="Save Me">
                 <img onclick="setAlbum(2)" src="./Photos/Pick Up The Phone.png" identifier="Pick Up The Phone">
@@ -49,7 +50,7 @@
                 </div>
                 <div class="volume">
                     <div onclick="mute()" id="volume-icon"><img src="./Photos/Volume.png"></div>
-                    <input type="range" id="volume" min="0" max="50" value="50">
+                    <input type="range" id="volume" min="0" max="1000" value="500">
                 </div>
             </div>
         </div>
@@ -84,6 +85,7 @@
         const sunset_image = "./Photos/Sunset.png";
         const blue_notes_2_image = "./Photos/Blue Notes 2.png"
         const dedication_image = "./Photos/Dedication.png"
+        const working_on_dying_image = "./Photos/Working On Dying.png"
 
         const play_button = "./Photos/Play.png";
         const pause_button = "./Photos/Pause.png";
@@ -189,6 +191,17 @@
                 ["https://dl.dropbox.com/scl/fi/s1m3gxh77cpp0nkrvxuyb/Let-Me-See.mp3?rlkey=s48n6d6ckzr73tyukj56pek5w&st=mmw6o5z3&dl=0", "Let Me See", "Chief Keef (feat. Tadoe)", dedication_image],
                 ["https://dl.dropbox.com/scl/fi/6bejks0dtrur87qg6bxf9/Be-Back.mp3?rlkey=6yw8tfk0tr67a6k64mp0i0uml&st=53njr8tu&dl=0", "Be Back", "Chief Keef", dedication_image],
             ],
+            [
+                ["https://dl.dropbox.com/scl/fi/f0fhant40rk955y8zo02c/Redlight-Moments.mp3?rlkey=rnm9tf0gpdleqxdu247qftrpp&st=plbndcm5&dl=0", "Redlight Moments", "Bladee", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/civc57qwttr5g8hrtqjh3/Lordship.mp3?rlkey=guapyq6lfniwfxnsfx087tm4d&st=cxbc0ktp&dl=0", "Lordship", "Bladee (feat. Yung Lean)", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/7hqy7kgg2v6lq4cknlev9/Knightsbridge.mp3?rlkey=a7uiffpzky5gdsyew94u59bzr&st=chto2cmj&dl=0", "Knightsbridge", "Bladee", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/xk293ud6cmn395qnwzs8l/Backstr-t-Boys.mp3?rlkey=qltr6d07m2gor4sjma85rzimb&st=yb079iur&dl=0", "Backstr€€t Boys", "Bladee (feat. Black Kray)", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/wvskmlgz1bthqm3i1kory/Under-Your-Spell.mp3?rlkey=wtekjjqvou55cg0a343pjmjup&st=abgowcgt&dl=0", "Under Your Spell", "Bladee", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/8qaoegrjsoj3k9vth7b1b/D-925.mp3?rlkey=r5149e2fjaof1sxtpzxbesias&st=gn8db5si&dl=0", "D-925", "Bladee", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/3grxwq33vn9glx4jschmc/Gatekeeper.mp3?rlkey=u5lm1jzwnvdwls1v28z28h8st&st=79l5jmg1&dl=0", "Gatekeeper", "Bladee", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/qq7kfw74f0ular34x72xf/Cherry-Bracelets.mp3?rlkey=3rybbi50r359ozkx0aybljihq&st=t4limh7t&dl=0", "Cherry Bracelets", "Bladee (feat. Yung Lean and Ecco2k)", working_on_dying_image],
+                ["https://dl.dropbox.com/scl/fi/hz62uwzy2nf7oa9gdgwu6/Best-Buy.mp3?rlkey=0fb9molbzin8hhkyb4ipx1wj4&st=hfvfgqv8&dl=0", "Best Buy", "Bladee", working_on_dying_image],
+            ],
         ]
 
         let info = [
@@ -201,6 +214,7 @@
             ["Sunset", "LUCKI • Single • 2017", sunset_image],
             ["Blue Notes 2", "Meek Mill • Single • 2021", blue_notes_2_image],
             ["Dedication", "Chief Keef • Album • 2017", dedication_image],
+            ["Working On Dying", "Bladee • Album • 2017", working_on_dying_image],
         ]
 
         let queue = []
@@ -224,7 +238,7 @@
         let currentInfo = info[0];
 
         volumeSlider.addEventListener("input", function(){
-            currentSong.volume = volume.value / 100;
+            currentSong.volume = volume.value / 1000;
 
             if (volume.value <= 0){
                 volumeIcon.querySelector("img").src = "./Photos/Mute.png"
@@ -264,7 +278,7 @@
             currentSong.pause();
             currentSong.currentTime = 0;
             currentSong = index[order][0];
-            currentSong.volume = volume.value / 100;
+            currentSong.volume = volume.value / 1000;
             currentSong.play();
 
             if (!listened.includes(currentSong)){
