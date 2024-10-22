@@ -17,23 +17,23 @@
             <div class="library">
                 <img onclick="setAlbum(0)" src="./Photos/Monster.png" identifier="Monster">
                 <img onclick="setAlbum(5)" src="./Photos/DS2.png" identifier="DS2">
+                <img onclick="setAlbum(9)" src="./Photos/Slime Season 3.png" identifier="Slime Season 3">
+                <img onclick="setAlbum(2)" src="./Photos/Pick Up The Phone.png" identifier="Pick Up The Phone">
                 <img onclick="setAlbum(3)" src="./Photos/Days Before Rodeo.png" identifier="Days Before Rodeo">
                 <img onclick="setAlbum(4)" src="./Photos/Rainbow Bridge 3.png" identifier="Rainbow Bridge 3">
-                <img onclick="setAlbum(9)" src="./Photos/Working On Dying.png" identifier="Working On Dying">
-                <img onclick="setAlbum(8)" src="./Photos/Dedication.png" identifier="Dedication">
+                <img onclick="setAlbum(8)" src="./Photos/Working On Dying.png" identifier="Working On Dying">
+                <img onclick="setAlbum(7)" src="./Photos/Dedication.png" identifier="Dedication">
                 <img onclick="setAlbum(1)" src="./Photos/Save Me.png" identifier="Save Me">
-                <img onclick="setAlbum(2)" src="./Photos/Pick Up The Phone.png" identifier="Pick Up The Phone">
                 <img onclick="setAlbum(6)" src="./Photos/Sunset.png" identifier="Sunset">
-                <img onclick="setAlbum(7)" src="./Photos/Blue Notes 2.png" identifier="Blue Notes 2">
             </div>
-            <div class="album-title">
+            <div id="album-title">
                 <img src="./Photos/Monster.png" class=album-img>
                 <div class="album-info">
                     <h1 id="album-name">Future</h1>
                     <p id="album-desc"> Future • Album • 2014</p>
                 </div>
             </div>
-            <div class="songs-list">
+            <div id="songs-list">
             </div>
             <div class="music-player">
                 <img src="./Photos/Monster.png" class=song-img>
@@ -62,7 +62,8 @@
         const feature = document.querySelectorAll(".feature");
         const shuffler = document.getElementById("shuffler");
         const repeater = document.getElementById("repeater");
-        const songsList = document.querySelector(".songs-list");
+        const songsList = document.getElementById("songs-list");
+        const albumTitle = document.getElementById("album-title");
         const current = document.querySelectorAll(".song-img");
         const volumeSlider = document.getElementById("volume");
         const volumeIcon = document.getElementById("volume-icon");
@@ -86,6 +87,7 @@
         const blue_notes_2_image = "./Photos/Blue Notes 2.png"
         const dedication_image = "./Photos/Dedication.png"
         const working_on_dying_image = "./Photos/Working On Dying.png"
+        const ss3_image = "./Photos/Slime Season 3.png"
 
         const play_button = "./Photos/Play.png";
         const pause_button = "./Photos/Pause.png";
@@ -172,9 +174,6 @@
                 ["https://dl.dropbox.com/scl/fi/27rzinpk0wj2n0k3i2s7q/Sunset.mp3?rlkey=wrmf0x571zx82ial13fpxmez2&st=yxryn3as&dl=0", "Sunset", "LUCKI", sunset_image],
             ],
             [
-                ["https://dl.dropbox.com/scl/fi/snmmopm0yq7e87kfdh4jl/Blue-Notes-2.mp3?rlkey=9lgc861p7mf9ij5xvt9t39uwx&st=pe86iuvk&dl=0", "Blue Notes 2", "Meek Mill (feat. Lil Uzi Vert)", blue_notes_2_image],
-            ],
-            [
                 ["https://dl.dropbox.com/scl/fi/enuh8a19az24bb8pv3bx0/Ticket.mp3?rlkey=qd12kzucwnheifuy7xa1pkkdp&st=l6ecxpkd&dl=0", "Ticket", "Chief Keef", dedication_image],
                 ["https://dl.dropbox.com/scl/fi/fp9uvnot72a5tpukby8dq/Keke-Palmer.mp3?rlkey=ur23p2c8bhr79chkz6f1272h2&st=3h8zsodj&dl=0", "Keke Palmer", "Chief Keef", dedication_image],
                 ["https://dl.dropbox.com/scl/fi/5afn867jsg5r3wkczi52x/Mailbox.mp3?rlkey=3k9a3ffbzqdso1hqmknnfi508&st=1eqfosp5&dl=0", "Mailbox", "Chief Keef", dedication_image],
@@ -202,19 +201,29 @@
                 ["https://dl.dropbox.com/scl/fi/qq7kfw74f0ular34x72xf/Cherry-Bracelets.mp3?rlkey=3rybbi50r359ozkx0aybljihq&st=t4limh7t&dl=0", "Cherry Bracelets", "Bladee (feat. Yung Lean and Ecco2k)", working_on_dying_image],
                 ["https://dl.dropbox.com/scl/fi/hz62uwzy2nf7oa9gdgwu6/Best-Buy.mp3?rlkey=0fb9molbzin8hhkyb4ipx1wj4&st=hfvfgqv8&dl=0", "Best Buy", "Bladee", working_on_dying_image],
             ],
+            [
+                ["https://dl.dropbox.com/scl/fi/5n2lscpv5sqa3bdi3h95m/With-Them.mp3?rlkey=qwvopn0f0bj869a0jkbs13hmj&st=0f4f0rm5&dl=0", "With Them", "Young Thug", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/zlwdtkgn8wubhg2tzaynb/Memo.mp3?rlkey=pjdu52r460jpga88f1m92p1fs&st=wpt8l9f4&dl=0", "Memo", "Young Thug", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/8n18gcc15q6qe81f7xl5t/Drippin.mp3?rlkey=y465s7zvdyx8lrvo348qboeyx&st=61iuz2qx&dl=0", "Drippin'", "Young Thug", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/e7dzl1ow5777pl8i1lho2/Slime-Shit.mp3?rlkey=jn48eibq6djaa7v0pbf1jwcei&st=jlvj83jv&dl=0", "Slime Shit", "Young Thug (feat. Yak Gotta, Lil Duke and PeeWee Roscoe)", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/ej5e1c08tdz2r6infzw4j/Digits.mp3?rlkey=4nez3uhy1t9abp7u99rhc6w4e&st=r5e8xtvl&dl=0", "Digits", "Young Thug", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/656uw8eshedy2ffppb92j/Worth-It.mp3?rlkey=qpg8fv4ue21z3m68flj8t3zpb&st=waq5b8mv&dl=0", "Worth It", "Young Thug", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/gbih96bvkkf9i2ur64wrd/Problem.mp3?rlkey=3o1m16vgov7v1eq6v7gr1nys6&st=adiuc2wi&dl=0", "Tattoos", "Young Thug", ss3_image],
+                ["https://dl.dropbox.com/scl/fi/gbih96bvkkf9i2ur64wrd/Problem.mp3?rlkey=3o1m16vgov7v1eq6v7gr1nys6&st=adiuc2wi&dl=0", "Problem", "Young Thug", ss3_image],
+            ],
         ]
 
         let info = [
-            ["Monster", "Future • Album • 2014", monster_image],
-            ["Save Me", "Chief Keef • Single • 2014", save_me_image],
-            ["Pick Up The Phone", "Young Thug, Travis Scott • Single • 2016", pick_up_the_phone_image],
-            ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image],
-            ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image],
-            ["DS2", "Future • Album • 2015", ds2_image],
-            ["Sunset", "LUCKI • Single • 2017", sunset_image],
-            ["Blue Notes 2", "Meek Mill • Single • 2021", blue_notes_2_image],
-            ["Dedication", "Chief Keef • Album • 2017", dedication_image],
-            ["Working On Dying", "Bladee • Album • 2017", working_on_dying_image],
+            ["Monster", "Future • Album • 2014", monster_image, "rgb(46, 28, 22)"],
+            ["Save Me", "Chief Keef • Single • 2014", save_me_image, "rgb(19, 28, 20)"],
+            ["Pick Up The Phone", "Young Thug, Travis Scott • Single • 2016", pick_up_the_phone_image, "rgb(148, 24, 13)"],
+            ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image, "rgb(46, 120, 171)"],
+            ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image, "rgb(189, 21, 21)"],
+            ["DS2", "Future • Album • 2015", ds2_image, "rgb(28, 72, 102)"],
+            ["Sunset", "LUCKI • Single • 2017", sunset_image, "rgb(191, 98, 141)"],
+            ["Dedication", "Chief Keef • Album • 2017", dedication_image, "rgb(184, 166, 163)"],
+            ["Working On Dying", "Bladee • Album • 2017", working_on_dying_image, "rgb(105, 31, 18)"],
+            ["Slime Season 3", "Young Thug • Album • 2016", ss3_image, "rgb(87, 30, 25)"],
         ]
 
         let queue = []
@@ -236,6 +245,10 @@
 
         let currentSong = index[0][0];
         let currentInfo = info[0];
+
+        function updateColor(){
+            albumTitle.style.background = `linear-gradient(to bottom, ${currentInfo[3]}, ${"rgb(30, 30, 30)"})`;
+        }
 
         volumeSlider.addEventListener("input", function(){
             currentSong.volume = volume.value / 1000;
@@ -307,6 +320,8 @@
             while (songsList.firstChild) {
                 songsList.removeChild(songsList.firstChild)
             }
+
+            updateColor()
 
             for (let i = 0; i < list.length; i++){
                 const newSong = document.createElement("div");
