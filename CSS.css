@@ -107,7 +107,7 @@
     overflow: auto;
     z-index: 0;
     overflow-x: hidden;
-    grid-template-rows: repeat(100000, 1fr);
+    grid-template-rows: repeat(1000, 1fr);
 }
 
 #search-bar::-webkit-scrollbar{
