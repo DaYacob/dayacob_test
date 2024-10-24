@@ -123,19 +123,31 @@
 }
 
 #songs-list div{
-    transform: translateX(12%);
+    line-height: 20%;
+    transform: translateX(10%);
     position: relative;
     color: white;
     height: 75px;
     align-items: center;
     display: inline-flex;
     font-size: 20px;
+    font-weight: bold;
     word-wrap: break-word;
+}
+
+#songs-list div h4{
+    position: absolute;
+    transform: translateY(-12px);
+    font-weight: normal;
+    padding-left: 120px;
 }
 
 #songs-list div p{
     position: absolute;
-    transform: translateX(65px);
+    transform: translateY(12px);
+    font-weight: lighter;
+    color: darkgrey;
+    padding-left: 120px;
 }
 
 .album-info h1{
