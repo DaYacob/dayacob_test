@@ -99,9 +99,9 @@
 }
 
 #songs-list{
-    transform: translateY(48.2%);
+    transform: translateY(49%);
     background-color: rgb(30, 30, 30);
-    height: 61%;
+    height: 60.4%;
     width: 100%;
     display: grid;
     overflow: auto;
