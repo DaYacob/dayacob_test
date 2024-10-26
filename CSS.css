@@ -139,7 +139,7 @@
     position: absolute;
     transform: translateY(-12px);
     font-weight: normal;
-    padding-left: 120px;
+    padding-left: 90px;
 }
 
 #songs-list div p{
@@ -147,7 +147,7 @@
     transform: translateY(14px);
     font-weight: lighter;
     color: darkgrey;
-    padding-left: 120px;
+    padding-left: 90px;
     font-size: 18px;
 }
 
