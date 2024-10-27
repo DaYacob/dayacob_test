@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title> DaYacob Music</title>
+        <title> DM Testing</title>
         <link rel="stylesheet" href="CSS.css">
         <link rel="shortcut icon" href="#">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,6 +51,7 @@
                     <div onclick="playPause()"><img src="./Photos/Play.png" id="ctrlIcon"></div>
                     <div onclick="nextSong()"><img src="./Photos/Skip.png"></div>
                     <div onclick="songRepeat()"><img src="./Photos/Repeat.png" id="repeater"></div>
+                    <input type="range" id="progress" min="0" max="10000" value="0">
                 </div>
                 <div class="volume">
                     <div onclick="mute()" id="volume-icon"><img src="./Photos/Volume.png"></div>
@@ -61,33 +62,34 @@
     </body>
 
     <script>
-        const ctrlIcon = document.getElementById("ctrlIcon");
-        const name = document.querySelectorAll(".name");
-        const feature = document.querySelectorAll(".feature");
-        const shuffler = document.getElementById("shuffler");
-        const repeater = document.getElementById("repeater");
-        const songsList = document.getElementById("songs-list");
-        const albumTitle = document.getElementById("album-title");
-        const current = document.querySelectorAll(".song-img");
-        const volumeSlider = document.getElementById("volume");
-        const volumeIcon = document.getElementById("volume-icon");
+        const ctrlIcon = document.getElementById("ctrlIcon")
+        const name = document.querySelectorAll(".name")
+        const feature = document.querySelectorAll(".feature")
+        const shuffler = document.getElementById("shuffler")
+        const repeater = document.getElementById("repeater")
+        const songsList = document.getElementById("songs-list")
+        const albumTitle = document.getElementById("album-title")
+        const current = document.querySelectorAll(".song-img")
+        const volumeSlider = document.getElementById("volume")
+        const volumeIcon = document.getElementById("volume-icon")
+        const progress = document.getElementById("progress")
 
-        const image = document.querySelector(".album-img");
-        const title = document.getElementById("album-name");
-        const desc = document.getElementById("album-desc");
+        const image = document.querySelector(".album-img")
+        const title = document.getElementById("album-name")
+        const desc = document.getElementById("album-desc")
 
-        let state = true;
-        let shuffled = false;
-        let repeated = false;
-        let order = 0;
+        let state = true
+        let shuffled = false
+        let repeated = false
+        let order = 0
 
-        const monster_image = "./Photos/Monster.png";
+        const monster_image = "./Photos/Monster.png"
         const days_before_rodeo_image = "./Photos/Days Before Rodeo.png"
-        const rainbow_bridge_3_image = "./Photos/Rainbow Bridge 3.png";
-        const save_me_image = "./Photos/Save Me.png";
-        const pick_up_the_phone_image = "./Photos/Pick Up The Phone.png";
-        const ds2_image = "./Photos/DS2.png";
-        const sunset_image = "./Photos/Sunset.png";
+        const rainbow_bridge_3_image = "./Photos/Rainbow Bridge 3.png"
+        const save_me_image = "./Photos/Save Me.png"
+        const pick_up_the_phone_image = "./Photos/Pick Up The Phone.png"
+        const ds2_image = "./Photos/DS2.png"
+        const sunset_image = "./Photos/Sunset.png"
         const blue_notes_2_image = "./Photos/Blue Notes 2.png"
         const dedication_image = "./Photos/Dedication.png"
         const working_on_dying_image = "./Photos/Working On Dying.png"
@@ -96,10 +98,10 @@
         const without_warning_image = "./Photos/Without Warning.png"
         const jeffery_image = "./Photos/Jeffery.png"
 
-        const play_button = "./Photos/Play.png";
-        const pause_button = "./Photos/Pause.png";
-        const volume_button = "./Photos/Volume.png";
-        const mute_button = "./Photos/Mute.png";
+        const play_button = "./Photos/Play.png"
+        const pause_button = "./Photos/Pause.png"
+        const volume_button = "./Photos/Volume.png"
+        const mute_button = "./Photos/Mute.png"
 
         // Song, name, artist and features, liked, image
 
@@ -110,7 +112,7 @@
                 ["https://dl.dropbox.com/scl/fi/bsd34athm32s8a6ctfzf0/Throw-Away.mp3?rlkey=skevn0tabwv1iz6ogn0fhf929&st=ux440syo&dl=0", "Throw Away", "Future", monster_image],
                 ["https://dl.dropbox.com/scl/fi/65rurcm7nuzmapnun5r41/After-That.mp3?rlkey=ba0hxvpg9w1nh17kflcxp8bcg&st=x07rpytd&dl=0", "After That", "Future, Lil Wayne", monster_image],
                 ["https://dl.dropbox.com/scl/fi/mppb7g4bryhsgovxs4q0r/My-Savages.mp3?rlkey=lirunr03ie3mezilhfytdxufu&st=z6q8387t&dl=0", "My Savages", "Future", monster_image],
-                ["https://dl.dropbox.com/scl/fi/wsvs4i9d97xy8yubzazu7/2Pac.mp3?rlkey=v984bx9crq243amrppiuhmbb4&st=4h0l7ub0&dl=0", "2Pac", "Future", monster_image],
+                ["https://dl.dropbox.com/scl/fi/wsvs4i9d97xy8yubzazu7/2Pac.mp3?rlkey=v984bx9crq243amrppiuhmbb4&st=wqfjzc5l&dl=0", "2Pac", "Future", monster_image],
                 ["https://dl.dropbox.com/scl/fi/pvntr7qum09rsazxxkwo7/Gangland.mp3?rlkey=zmibdztzm8p06klty0p4qvfd7&st=45fua5e8&dl=0", "Gangland", "Future", monster_image],
                 ["https://dl.dropbox.com/scl/fi/8u8wojhgoddf1xskn6zhv/Fetti.mp3?rlkey=qnyk39s9r5zpu4j5ziucpg5ca&st=lnzbzdhg&dl=0", "Fetti", "Future", monster_image],
                 ["https://dl.dropbox.com/scl/fi/koeszhjbwqkgvhp57zjjr/Hardly.mp3?rlkey=iy4m9fedw7xt7xbpkz1sovmht&st=po3klypw&dl=0", "Hardly", "Future", monster_image],
@@ -281,8 +283,8 @@
 
         let listened = []
 
-        let index = all[0];
-        let list = index;
+        let index = all[0]
+        let list = index
 
         for (let i = 0; i < all.length; i++){
             for (let j = 0; j < all[i].length; j++){
@@ -294,28 +296,75 @@
             }
         }
 
-        let currentSong = index[0][0];
-        let currentInfo = info[0];
+        let currentSong = index[0][0]
+        let currentInfo = info[0]
+
+        let dragging = false
 
         function updateColor(){
-            albumTitle.style.background = `linear-gradient(to bottom, ${currentInfo[3]}, ${"rgb(30, 30, 30)"})`;
+            albumTitle.style.background = `linear-gradient(to bottom, ${currentInfo[3]}, ${"rgb(30, 30, 30)"})`
         }
 
+        function progression(){
+            progress.value = currentSong.currentTime
+
+            currentSong.addEventListener("loadedmetadata", () => {
+                progress.max = currentSong.duration;
+            })
+
+            progress.max = currentSong.duration
+
+            progress.onchange = function(){
+                currentSong.currentTime = progress.value
+            }
+
+            currentSong.ontimeupdate = function(){
+                if (!dragging){
+                    const timestamp = (progress.value / progress.max) * 100
+                    progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${timestamp}%, gray ${timestamp}%)`)
+                    progress.value = currentSong.currentTime
+                }
+            }
+        }
+
+        document.addEventListener("mousemove", function(){
+            if (dragging){
+                const timestamp = (progress.value / progress.max) * 100
+                progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${timestamp}%, gray ${timestamp}%)`)
+            }
+        })
+
+        progress.addEventListener("mousedown", function(){
+            dragging = true
+        })
+
+        progress.addEventListener("mouseup", function(){
+            dragging = false
+        })
+
+        progress.addEventListener("touchstart", function(){
+            dragging = true
+        })
+
+        progress.addEventListener("touchend", function(){
+            dragging = false
+        })
+
         volumeSlider.addEventListener("input", function(){
-            currentSong.volume = volume.value / 1000;
-            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, darkgray ${volume.value/10}%)`);
+            currentSong.volume = volume.value / 1000
+            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, gray ${volume.value/10}%)`)
             if (volume.value <= 0){
                 volumeIcon.querySelector("img").src = "./Photos/Mute.png"
             } else {
                 volumeIcon.querySelector("img").src = "./Photos/Volume.png"
             }
-        });
+        })
 
         function findNext(value){
             for (let i = 0; i < all.length; i++){
                 for (let j = 0; j < all[i].length; j++){
                     if (all[i][j][0] == value){
-                        return i;
+                        return i
                     }
                 }
             }
@@ -325,7 +374,7 @@
             listened.push(currentSong)
             currentSong.addEventListener("ended", function() {
                 if (repeated == false){
-                    skip();
+                    skip()
                 }
                 updatePlayer()
             })
@@ -333,38 +382,39 @@
 
         function updatePlayer(change){
             if (change == true){
-                index = list;
+                index = list
             }
             else{
-                index = all[findNext(currentSong)];
+                index = all[findNext(currentSong)]
             }
 
-            currentSong.pause();
-            currentSong.currentTime = 0;
-            currentSong = index[order][0];
-            currentSong.volume = volume.value / 1000;
-            currentSong.play();
+            currentSong.pause()
+            currentSong.currentTime = 0
+            currentSong = index[order][0]
+            currentSong.volume = volume.value / 1000
+            currentSong.play()
 
             if (!listened.includes(currentSong)){
                 finishSong();
             }
 
             name.forEach(x => {
-                x.innerHTML = index[order][1];
+                x.innerHTML = index[order][1]
             })
             feature.forEach(x => {
-                x.innerHTML = index[order][2];
+                x.innerHTML = index[order][2]
             })
             current.forEach(x => {
-                x.src = index[order][3];
+                x.src = index[order][3]
             })
 
-            resetColours();
-            checkColour();
-            removeRepetition();
+            resetColours()
+            checkColour()
+            progression()
+            removeRepetition()
 
-            state = false;
-            ctrlIcon.src=pause_button;
+            state = false
+            ctrlIcon.src=pause_button
         }
 
         function updateSongs(){
@@ -375,8 +425,8 @@
             updateColor()
 
             for (let i = 0; i < list.length; i++){
-                const newSong = document.createElement("div");
-                newSong.classList.add("setplay");
+                const newSong = document.createElement("div")
+                newSong.classList.add("setplay")
                 newSong.identifier = i+1
 
                 if (i+1 >= 1000){
@@ -488,7 +538,7 @@
         function mute(){
             volume.value = 0;
             currentSong.volume = volume.value;
-            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, darkgray ${volume.value/10}%)`);
+            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, gray ${volume.value/10}%)`);
             volumeIcon.querySelector("img").src = mute_button;
         }
 
@@ -582,35 +632,36 @@
             }
         }
 
-        const searchbox = document.getElementById("search-bar");
+        const searchbox = document.getElementById("search-bar")
         const searching = document.getElementById("searching")
-        const library = document.querySelectorAll(".library img");
+        const library = document.querySelectorAll(".library img")
 
         searchbox.addEventListener("input", function(){
             library.forEach(imagecover => {
-                const identifier = imagecover.getAttribute("identifier").toLowerCase();
-                const searchvalue = searching.value.toLowerCase();
+                const identifier = imagecover.getAttribute("identifier").toLowerCase()
+                const searchvalue = searching.value.toLowerCase()
                 if (identifier.includes(searchvalue)) {
-                    imagecover.style.display = "block";
+                    imagecover.style.display = "block"
                 } else {
-                    imagecover.style.display = "none";
+                    imagecover.style.display = "none"
                 }
             })
         })
 
         document.addEventListener("keydown", function(event){
             if (event.key === " "){
-               const activeElement = document.activeElement;
+               const activeElement = document.activeElement
 
                 if (!(activeElement.tagName === 'INPUT' && activeElement.type === 'text') && activeElement.tagName !== 'TEXTAREA') {
-                    event.preventDefault();
+                    event.preventDefault()
                 }
             }
-        });
+        })
 
-        finishSong();
-        updateSongs();
-        checkColour();
-        addButton();
+        finishSong()
+        updateSongs()
+        checkColour()
+        addButton()
+        progression()
     </script>
 </html>
