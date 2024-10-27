@@ -488,6 +488,7 @@
         function mute(){
             volume.value = 0;
             currentSong.volume = volume.value;
+            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, darkgray ${volume.value/10}%)`);
             volumeIcon.querySelector("img").src = mute_button;
         }
 
