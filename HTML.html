@@ -288,11 +288,9 @@
 
         for (let i = 0; i < all.length; i++){
             for (let j = 0; j < all[i].length; j++){
-                const newAudio = new Audio(all[i][j][0]);
-                newAudio.preload = "auto";
-                all[i][j][0] = newAudio;
-
-                const newImage = new Image(all[i][j][3])
+                const newAudio = new Audio(all[i][j][0])
+                newAudio.preload = "auto"
+                all[i][j][0] = newAudio
             }
         }
 
@@ -430,24 +428,24 @@
                 newSong.identifier = i+1
 
                 if (i+1 >= 1000){
-                    newSong.innerHTML = `${"  "} ${i+1}`;
+                    newSong.innerHTML = `${"  "} ${i+1}`
                 } else if (i+1 >= 100){
-                    newSong.innerHTML = `${"      "} ${i+1}`;
+                    newSong.innerHTML = `${"      "} ${i+1}`
                 } else if (i+1 >= 10){
-                    newSong.innerHTML = `${"          "} ${i+1}`;
+                    newSong.innerHTML = `${"          "} ${i+1}`
                 } else {
-                    newSong.innerHTML = `${"              "} ${i+1}`;
+                    newSong.innerHTML = `${"              "} ${i+1}`
                 }
 
-                image.src = currentInfo[2];
-                title.innerHTML = currentInfo[0];
-                desc.innerHTML = currentInfo[1];
+                image.src = currentInfo[2]
+                title.innerHTML = currentInfo[0]
+                desc.innerHTML = currentInfo[1]
             
                 const newH = document.createElement("h4");
-                newH.innerHTML = `${list[i][1]}`;
+                newH.innerHTML = `${list[i][1]}`
 
                 const newP = document.createElement("p");
-                newP.innerHTML = `${list[i][2]}`;
+                newP.innerHTML = `${list[i][2]}`
 
                 newSong.appendChild(newH)
                 newSong.appendChild(newP)
@@ -457,16 +455,16 @@
 
         function setAlbum(setNum){
             songsList.scrollTo(0, 0)
-            list = all[setNum];
-            currentInfo = info[setNum];
-            updateSongs();
-            addButton();
-            checkColour();
+            list = all[setNum]
+            currentInfo = info[setNum]
+            updateSongs()
+            addButton()
+            checkColour()
         }
 
         function resetColours() {
             Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
-                button.style.color = "white";
+                button.style.color = "white"
             });
         };
 
@@ -475,7 +473,7 @@
                 const pos = parseInt(button.identifier) - 1
                 if (order > -1){
                     if (list[pos][0] == currentSong){
-                        button.style.color = "limegreen";
+                        button.style.color = "limegreen"
                     };
                 }
             });
@@ -487,36 +485,36 @@
                 button.addEventListener("click", function() {
                     if (list[pos][0] != currentSong) {
                         order = pos
-                        updatePlayer(true);
+                        updatePlayer(true)
                     }
                     else if (state == true) {
-                        checkColour();
-                        currentSong.play();
-                        state = false;
-                        ctrlIcon.src=pause_button;
+                        checkColour()
+                        currentSong.play()
+                        state = false
+                        ctrlIcon.src=pause_button
                     }
                     else if (state == false) {
                         checkColour()
-                        currentSong.pause();
-                        ctrlIcon.src=play_button;
-                        state = true;
+                        currentSong.pause()
+                        ctrlIcon.src=play_button
+                        state = true
                     }
                 })
                 button.addEventListener("mouseover", function() {
                     button.style.background = "rgb(40, 40, 40)"
                 })
                 button.addEventListener("mouseleave", function() {
-                    button.style.background = "rgb(30, 30, 30)";
+                    button.style.background = "rgb(30, 30, 30)"
                 })
             })
         }
 
         function number(){
-            let num = Math.floor(Math.random() * list.length);
+            let num = Math.floor(Math.random() * list.length)
 
             if (list.length > 1){
                 while (num == order){
-                    num = Math.floor(Math.random() * list.length);
+                    num = Math.floor(Math.random() * list.length)
                 }
                 return num
             }
@@ -528,34 +526,34 @@
         function songRepeat(){
             repeater.classList.toggle('inverted')
             if (repeated == false){
-                repeated = true;
+                repeated = true
             }
             else {
-                repeated = false;
+                repeated = false
             }
         }
 
         function mute(){
-            volume.value = 0;
-            currentSong.volume = volume.value;
-            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, gray ${volume.value/10}%)`);
-            volumeIcon.querySelector("img").src = mute_button;
+            volume.value = 0
+            currentSong.volume = volume.value
+            volumeSlider.style.setProperty("--slider-background", `linear-gradient(to right, white ${volume.value/10}%, gray ${volume.value/10}%)`)
+            volumeIcon.querySelector("img").src = mute_button
         }
 
         function shuffle(){
             shuffler.classList.toggle('inverted')
             if (shuffled == false){
-                shuffled = true;
+                shuffled = true
             }
             else {
-                shuffled = false;
+                shuffled = false
             }
         }
 
         function removeRepetition(){
             if (repeated == true){
                 repeater.classList.toggle('inverted')
-                repeated = false;
+                repeated = false
             }
         }
 
@@ -565,7 +563,7 @@
                     order = 0
                 }
                 else {
-                    order++;
+                    order++
                 }
             }
             else {
@@ -575,7 +573,7 @@
 
         function rewind(){
             if (order == 0){
-                order = index.length - 1;
+                order = index.length - 1
             }
             else {
                 order--;
@@ -586,24 +584,24 @@
             if (order > -1) {
                 checkColour()
                 if (state === true){
-                    currentSong.play();
-                    ctrlIcon.src=pause_button;
-                    state = false;
+                    currentSong.play()
+                    ctrlIcon.src=pause_button
+                    state = false
                 }
                 else {
-                    currentSong.pause();
-                    ctrlIcon.src=play_button;
-                    state = true;
+                    currentSong.pause()
+                    ctrlIcon.src=play_button
+                    state = true
                 }
             }
         }
 
         function nextSong(){
             if (order > index.length){
-                order = 0;
+                order = 0
             }
             else {
-                skip();
+                skip()
             }
             updatePlayer(false)
         }
@@ -611,12 +609,12 @@
         function previousSong(){
             if (order > -1) {
                 if (order > index.length){
-                    order = 0;
-                    resetColours();
-                    checkColour();
+                    order = 0
+                    resetColours()
+                    checkColour()
                 }
                 else {
-                    rewind();
+                    rewind()
                 }
                 updatePlayer(false)
             }
