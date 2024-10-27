@@ -307,7 +307,7 @@
             progress.value = currentSong.currentTime
 
             currentSong.addEventListener("loadedmetadata", () => {
-                progress.max = currentSong.duration;
+                progress.max = currentSong.duration
             })
 
             progress.max = currentSong.duration
@@ -393,7 +393,7 @@
             currentSong.play()
 
             if (!listened.includes(currentSong)){
-                finishSong();
+                finishSong()
             }
 
             name.forEach(x => {
@@ -441,16 +441,16 @@
                 title.innerHTML = currentInfo[0]
                 desc.innerHTML = currentInfo[1]
             
-                const newH = document.createElement("h4");
+                const newH = document.createElement("h4")
                 newH.innerHTML = `${list[i][1]}`
 
-                const newP = document.createElement("p");
+                const newP = document.createElement("p")
                 newP.innerHTML = `${list[i][2]}`
 
                 newSong.appendChild(newH)
                 newSong.appendChild(newP)
                 songsList.appendChild(newSong)
-            };
+            }
         }
 
         function setAlbum(setNum){
@@ -465,8 +465,8 @@
         function resetColours() {
             Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
                 button.style.color = "white"
-            });
-        };
+            })
+        }
 
         function checkColour() {
             Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
@@ -474,10 +474,10 @@
                 if (order > -1){
                     if (list[pos][0] == currentSong){
                         button.style.color = "limegreen"
-                    };
+                    }
                 }
-            });
-        };
+            })
+        }
 
         function addButton(){
             Array.from(document.getElementsByClassName("setplay")).forEach(function(button) {
@@ -576,7 +576,7 @@
                 order = index.length - 1
             }
             else {
-                order--;
+                order--
             }
         }
 
@@ -622,7 +622,7 @@
 
         document.body.onkeyup = function(event){
             if (event.key === " ") {
-                const activeElement = document.activeElement;
+                const activeElement = document.activeElement
 
                 if (!(activeElement.tagName === 'INPUT' && activeElement.type === 'text') && activeElement.tagName !== 'TEXTAREA') {
                     playPause()
