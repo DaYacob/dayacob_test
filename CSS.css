@@ -208,18 +208,15 @@
 
 .controls{
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 5px
+    gap: 7px
 }
 
 #volume{
     position: absolute;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     transform: translateY(250%);
     right: 1%;
     width: 5.5%;
@@ -230,18 +227,50 @@
     cursor: pointer;
     border: none;
     -webkit-appearance: none;
+    outline: none;
     accent-color: white;
 }
 
-#volume::-webkit-slider-runnable-track{
+#progress{
+    position: absolute;
+    transform: translateX(-30%);
+    top: 125%;
+    width: 250%;
+    height: 50%;
+
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    outline: none;
+    accent-color: white;
+}
+
+#volume::-webkit-slider-runnable-track, #progress::-webkit-slider-runnable-track{
     background-color: darkgray;
-    background: var(--slider-background, linear-gradient(to right, white 50%, darkgray 50%));
     transition: background 450ms ease-in;
     border-radius: 10px;
     height: 6px;
 }
 
-#volume::-webkit-slider-thumb{
+#volume::-webkit-slider-runnable-track{
+    background: var(--slider-background, linear-gradient(to right, white 50%, gray 50%));
+}
+
+#progress::-webkit-slider-runnable-track{
+    background: var(--slider-background, linear-gradient(to right, white 0%, gray 0%));
+}
+
+#volume::-moz-range-track{
+    background: var(--slider-background, linear-gradient(to right, white 50%, gray 50%));
+}
+
+#progress::-moz-range-track{
+    background: var(--slider-background, linear-gradient(to right, white 0%, gray 0%));
+}
+
+#volume::-webkit-slider-thumb, #progress::-webkit-slider-thumb{
     appearance: none;
     -webkit-appearance: none;
 
@@ -252,16 +281,15 @@
     border-radius: 50%;
 }
 
-#volume::-moz-range-track{
+#volume::-moz-range-track, #progress::-moz-range-track{
     background-color: darkgray;
-    background: var(--slider-background, linear-gradient(to right, white 50%, darkgray 50%));
+    background: var(--slider-background, linear-gradient(to right, white 50%, gray 50%));
     transition: background 450ms ease-in;
-    accent-color: white;
     border-radius: 10px;
     height: 6px;
 }
 
-#volume::-moz-range-thumb{
+#volume::-moz-range-thumb, #progress::-moz-range-thumb{
     appearance: none;
     -webkit-appearance: none;
 
@@ -291,13 +319,13 @@
 }
 
 .controls img{
-    width: 90%;
-    height: 90%;
+    width: 95%;
+    height: 95%;
 }
 
 .controls div{
-    width: 7vh;
-    height: 7vh;
+    width: 4vh;
+    height: 4vh;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -307,8 +335,8 @@
 }
 
 #shuffler, #repeater{
-    width: 5vh;
-    height: 5vh;
+    width: 3vh;
+    height: 3vh;
 }
 
 .controls div:nth-child(3){
