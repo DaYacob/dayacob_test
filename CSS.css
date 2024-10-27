@@ -144,7 +144,7 @@
 
 #songs-list div p{
     position: absolute;
-    transform: translateY(14px);
+    transform: translateY(13px);
     font-weight: lighter;
     color: darkgrey;
     padding-left: 90px;
