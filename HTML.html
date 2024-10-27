@@ -289,7 +289,7 @@
         for (let i = 0; i < all.length; i++){
             for (let j = 0; j < all[i].length; j++){
                 const newAudio = new Audio(all[i][j][0])
-                newAudio.preload = "auto"
+                newAudio.preload = "metadata"
                 all[i][j][0] = newAudio
             }
         }
