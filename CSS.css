@@ -125,7 +125,6 @@
 #songs-list div{
     line-height: 20%;
     transform: translateX(10%);
-    position: relative;
     color: white;
     height: 78px;
     align-items: center;
@@ -218,8 +217,58 @@
 
 #volume{
     position: absolute;
-    right: 1.5%;
-    transform: translateY(440%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(250%);
+    right: 1%;
+    width: 5.5%;
+    height: 16.5%;
+
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    accent-color: white;
+}
+
+#volume::-webkit-slider-runnable-track{
+    background-color: darkgray;
+    background: var(--slider-background, linear-gradient(to right, white 50%, darkgray 50%));
+    transition: background 450ms ease-in;
+    border-radius: 10px;
+    height: 6px;
+}
+
+#volume::-webkit-slider-thumb{
+    appearance: none;
+    -webkit-appearance: none;
+
+    margin-top: -5px;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+
+#volume::-moz-range-track{
+    background-color: darkgray;
+    background: var(--slider-background, linear-gradient(to right, white 50%, darkgray 50%));
+    transition: background 450ms ease-in;
+    accent-color: white;
+    border-radius: 10px;
+    height: 6px;
+}
+
+#volume::-moz-range-thumb{
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
 }
 
 #volume-icon{
@@ -234,26 +283,6 @@
     border-radius: 50%;
     cursor: pointer;
     right: 7%;
-}
-
-input[type="range"] {
-    appearance: none;
-    width: 5%;
-    height: 10%;
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: gray;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 1vh;
-    height: 1vh;
-    background: white;
-    border-radius: 50%;
-    cursor: ew-resize;
-    box-shadow: -80px 0 0 75px white;
 }
 
 #volume-icon img{
