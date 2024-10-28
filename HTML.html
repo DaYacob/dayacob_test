@@ -333,6 +333,11 @@
             }
         })
 
+        progress.addEventListener("input", function(){
+            const timestamp = (progress.value / progress.max) * 100
+            progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${timestamp}%, gray ${timestamp}%)`)
+        })
+
         progress.addEventListener("mousedown", function(){
             dragging = true
         })
