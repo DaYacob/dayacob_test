@@ -233,9 +233,9 @@
 
 #progress{
     position: absolute;
-    transform: translateX(-30%);
     top: 125%;
-    width: 250%;
+    right: -100%;
+    width: 300%;
     height: 50%;
 
     appearance: none;
