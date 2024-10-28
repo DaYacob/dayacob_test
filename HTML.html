@@ -305,6 +305,7 @@
 
         function progression(){
             progress.value = currentSong.currentTime
+            progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${0}%, gray ${0}%)`)
 
             currentSong.addEventListener("loadedmetadata", () => {
                 progress.max = currentSong.duration
@@ -318,9 +319,9 @@
 
             currentSong.ontimeupdate = function(){
                 if (!dragging){
+                    progress.value = currentSong.currentTime
                     const timestamp = (progress.value / progress.max) * 100
                     progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${timestamp}%, gray ${timestamp}%)`)
-                    progress.value = currentSong.currentTime
                 }
             }
         }
