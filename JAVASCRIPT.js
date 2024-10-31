@@ -209,7 +209,7 @@ let all = [
 
 let info = [
     ["Monster", "Future • Album • 2014", monster_image, "rgb(46, 28, 22)"],
-    ["Save Me", "Chief Keef • Single • 2014", save_me_image, "rgb(19, 28, 20)"],
+    ["Save Me", "Chief Keef • Single • 2014", save_me_image, "rgb(71, 74, 62)"],
     ["Pick Up The Phone", "Young Thug, Travis Scott, Quavo • Single • 2016", pick_up_the_phone_image, "rgb(148, 24, 13)"],
     ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image, "rgb(46, 120, 171)"],
     ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image, "rgb(189, 21, 21)"],
