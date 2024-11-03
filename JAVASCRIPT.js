@@ -247,13 +247,13 @@ for (let i = 0; i < all.length; i++){
             currentSong.volume = volume.value / 1000
         }
     }
-
-    finishSong()
-    updateSongs()
-    checkColour()
-    addButton()
-    progression()
 }
+
+finishSong()
+updateSongs()
+checkColour()
+addButton()
+progression()
 
 let dragging = false
 
