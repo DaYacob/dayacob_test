@@ -13,6 +13,7 @@ const almighty_so_image = "./Photos/Almighty So.png"
 const without_warning_image = "./Photos/Without Warning.png"
 const jeffery_image = "./Photos/Jeffery.png"
 const evol_image = "./Photos/Evol.png"
+const wizrd_image = "./Photos/The Wizrd.png"
 
 const play_button = "./Photos/Play.png"
 const pause_button = "./Photos/Pause.png"
@@ -30,6 +31,9 @@ const current = document.querySelectorAll(".song-img")
 const volumeSlider = document.getElementById("volume")
 const volumeIcon = document.getElementById("volume-icon")
 const progress = document.getElementById("progress")
+const searchbox = document.getElementById("search-bar")
+const searching = document.getElementById("searching")
+const library = document.querySelectorAll(".library img")
 
 const image = document.querySelector(".album-img")
 const title = document.getElementById("album-name")
@@ -90,7 +94,7 @@ let all = [
         ["https://dl.dropbox.com/scl/fi/zxdo15ri1gh2354p26s16/Crucifixion.mp3?rlkey=1iwkn6lis41cn2tt7pr7kw6sg&st=p78uhasa&dl=0", "Crucifixion", "Sematary", rainbow_bridge_3_image],
     ],
     [
-        ["https://dl.dropbox.com/scl/fi/2uetoz687lpvona58rrp0/Thought-It-Was-a-Drought.mp3?rlkey=wk7xbqnw2yd8sce2cl44nvmi3&st=m03s9l7b&dl=0", "Thought It Was A Drought", "Future", ds2_image],
+        ["https://dl.dropbox.com/scl/fi/lgg6s7607e9o8hqicdoxb/Thought-It-Was-A-Drought.mp3?rlkey=yc4fep5ff3o703yeq0fl1b8ew&st=8ctc2vy9&dl=0", "Thought It Was A Drought", "Future", ds2_image],
         ["https://dl.dropbox.com/scl/fi/a1szblezbbw7dbkbh2yt2/I-Serve-The-Base.mp3?rlkey=02breadwpw4bzmrhfh1msyvl1&st=eh0out9h&dl=0", "I Serve The Base", "Future", ds2_image],
         ["https://dl.dropbox.com/scl/fi/obdkm09rzkx1dynsxzhpv/Where-Ya-At.mp3?rlkey=x72tobruj10ivcjsyyaciqxo0&st=uoxpxks1&dl=0", "Where Ya At", "Future, Drake", ds2_image],
         ["https://dl.dropbox.com/scl/fi/4qdxscq5siwboh8hn6b9g/Groupies.mp3?rlkey=zojbeocyb1gwtb1i0vhpc1lvr&st=yav8v97s&dl=0", "Groupies", "Future", ds2_image],
@@ -205,6 +209,28 @@ let all = [
         ["https://dl.dropbox.com/scl/fi/i03m2tv1bvvqa1tz71eg3/Fly-Shit-Only.mp3?rlkey=sc7e0l120vcoo19m63dzmr8u3&st=bi96mme5&dl=0", "Fly Shit Only", "Future", evol_image],
         ["https://dl.dropbox.com/scl/fi/k3bkx2kj1f567gwvmiwxk/Wicked.mp3?rlkey=s86u9rwqocpur12kpacthdnwq&st=jkbfp753&dl=0", "Wicked", "Future", evol_image],
     ],
+    [
+        ["https://dl.dropbox.com/scl/fi/dsi0dqmg952pg5kax277n/Never-Stop.mp3?rlkey=g5avocu5yga3uwbz7zek6uqdw&st=2s6cdc6d&dl=0", "Never Stop", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/8z50v929yw9h4djscvz1x/Jumpin-On-A-Jet.mp3?rlkey=9nbw6x8axecu7k7nu6m91yb8x&st=30hrpryd&dl=0", "Jumpin On A Jet", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/cus6hovw7e6lzry30zmbe/Rocket-Ship.mp3?rlkey=hhl7auu0xlcz5l1fkop1fbeil&st=3p4n03n0&dl=0", "Rocket Ship", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/t465tp1r50tk63zz64jkv/Temptation.mp3?rlkey=v5r83agqdo2nvwsggo27a9qq1&st=3dd39skr&dl=0", "Temptation", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/onrxfg9vg8jf4iba70iok/Crushed-Up.mp3?rlkey=loyt0k71q2415e7w08e0ac6jo&st=aoxorwlp&dl=0", "Crushed Up", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/4rqdg3fldh5pkkrtxlsqg/F-N.mp3?rlkey=llmkm0v2j5d19joplnja9k4mi&st=wsp7nv9z&dl=0", "F&N", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/ex4tvp01aafl4k7tcida0/Call-The-Coroner.mp3?rlkey=0quh6tnqrf6h5pls2ia6ofmmd&st=2ylwcene&dl=0", "Call The Coroner", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/2r6vklqlhzirl5iaqpfto/Talk-Shit-Like-A-Preacher.mp3?rlkey=4k7ig6ipnb10b3r6wgjqen4tl&st=ha8xbyoa&dl=0", "Talk Shit Like A Preacher", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/jh7p242p30gjulyc3a1he/Promise-U-That.mp3?rlkey=vyjoe4sog61c3nvoc7bbb6kqg&st=8a5owq3l&dl=0", "Promise U That", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/vzddiv95vvdj6j0h42hwx/Stick-To-The-Models.mp3?rlkey=kqfl9mmlvixph8e3zbyctxmxq&st=hygcxrp5&dl=0", "Stick To The Models", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/kgeufaraej9cuhsyl3m8r/Overdose.mp3?rlkey=omlpps21dzak7ktt1r9nrae7p&st=cx7fliwb&dl=0", "Overdose", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/brvsz5ononpmnbc4xst3f/Krazy-But-True.mp3?rlkey=l82xcp8fgfkvlxjn22hiff0es&st=wjul20z3&dl=0", "Krazy But True", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/v8sl6arx4baiwlo2fss4p/Servin-Killa-Kam.mp3?rlkey=ijr7b7p4loutgtzm7qur0cfxx&st=iq3elfu6&dl=0", "Servin Killa Kam", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/uolanocg1gy2jyl0z475k/Baptiize.mp3?rlkey=g2ghdmfdkng3qd5i36itypmrm&st=62v2u4w1&dl=0", "Baptiize", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/ekei56ikcxmn7k2z8eq5n/Unicorn-Purp.mp3?rlkey=ygd9clp2csxx279i0hktpcrbo&st=sq7f5hqw&dl=0", "Unicorn Purp", "Future, Young Thug, Gunna", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/k35v6wsr3ggx0zmv7totv/Goin-Dummi.mp3?rlkey=gdhd42u048d72aj75wktjxkyl&st=2rog7jz8&dl=0", "Goin Dummi", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/oo2ktr2owojjs88amxdf9/First-Off.mp3?rlkey=mf3zx939341jxby55zzqnc732&st=2bd3to2v&dl=0", "First Off", "Future, Travis Scott", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/jguu9kbwno164uk6wxikb/Faceshot.mp3?rlkey=l95z03vl2hneladxdjjpvtsk2&st=wv0a0sgp&dl=0", "Faceshot", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/wy42xp4lndzr4s6gyd4j5/Ain-t-Coming-Back.mp3?rlkey=z3ed5th7l0xdytzfzyptltorb&st=aerxqtzv&dl=0", "Ain't Coming Back", "Future", wizrd_image],
+        ["https://dl.dropbox.com/scl/fi/8uw7mf5k7frp15c55bd5c/Tricks-On-Me.mp3?rlkey=db3fr0h3nep8w85ly8bml5l2v&st=z76lxyk7&dl=0", "Tricks On Me", "Future", wizrd_image],
+    ],
 ]
 
 let info = [
@@ -222,6 +248,7 @@ let info = [
     ["Without Warning", "21 Savage, Offset, Metro Boomin • Album • 2017", without_warning_image, "rgb(189, 21, 21)"],
     ["JEFFERY", "Young Thug • Album • 2016", jeffery_image, "rgb(111, 122, 171)"],
     ["EVOL", "Future • Album • 2016", evol_image, "rgb(49, 55, 66)"],
+    ["Future Hndrxx Presents: The WIZRD", "Future • Album • 2016", wizrd_image, "rgb(163, 59, 15)"],
 ]
 
 let state = true
@@ -597,15 +624,14 @@ document.body.onkeyup = function(event){
     }
 }
 
-const searchbox = document.getElementById("search-bar")
-const searching = document.getElementById("searching")
-const library = document.querySelectorAll(".library img")
-
 searchbox.addEventListener("input", function(){
+    const initialInput = searching.value.toLowerCase()
+    const tags = initialInput.split(/\s+/)
+
     library.forEach(imagecover => {
         const identifier = imagecover.getAttribute("identifier").toLowerCase()
-        const searchvalue = searching.value.toLowerCase()
-        if (identifier.includes(searchvalue)) {
+        const matches = tags.every(tag => identifier.includes(tag))
+        if (matches) {
             imagecover.style.display = "block"
         } else {
             imagecover.style.display = "none"
