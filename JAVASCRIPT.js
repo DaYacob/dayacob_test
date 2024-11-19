@@ -4,8 +4,7 @@ const rainbow_bridge_3_image = "./Photos/Rainbow Bridge 3.png"
 const save_me_image = "./Photos/Save Me.png"
 const pick_up_the_phone_image = "./Photos/Pick Up The Phone.png"
 const ds2_image = "./Photos/DS2.png"
-const sunset_image = "./Photos/Sunset.png"
-const blue_notes_2_image = "./Photos/Blue Notes 2.png"
+const days_be4_storm_image = "./Photos/Sunset.png"
 const dedication_image = "./Photos/Dedication.png"
 const working_on_dying_image = "./Photos/Working On Dying.png"
 const ss3_image = "./Photos/Slime Season 3.png"
@@ -14,6 +13,7 @@ const without_warning_image = "./Photos/Without Warning.png"
 const jeffery_image = "./Photos/Jeffery.png"
 const evol_image = "./Photos/Evol.png"
 const wizrd_image = "./Photos/The Wizrd.png"
+const warboy_image = "./Photos/Warboy.png"
 
 const play_button = "./Photos/Play.png"
 const pause_button = "./Photos/Pause.png"
@@ -114,7 +114,8 @@ let all = [
         ["https://dl.dropbox.com/scl/fi/layd838xe80a7oqdvcsjd/Fuck-Up-Some-Commas.mp3?rlkey=8ofnasiv42it4ioblsr0uczrh&st=ipzb3tpv&dl=0", "Fuck Up Some Commas", "Future", ds2_image],
     ],
     [
-        ["https://dl.dropbox.com/scl/fi/27rzinpk0wj2n0k3i2s7q/Sunset.mp3?rlkey=wrmf0x571zx82ial13fpxmez2&st=yxryn3as&dl=0", "Sunset", "LUCKI", sunset_image],
+        ["https://dl.dropbox.com/scl/fi/27rzinpk0wj2n0k3i2s7q/Sunset.mp3?rlkey=wrmf0x571zx82ial13fpxmez2&st=yxryn3as&dl=0", "Sunset", "LUCKI", days_be4_storm_image],
+        ["https://dl.dropbox.com/scl/fi/cu5khtszrc43jd7d0et7w/Don-t-You-Love-Me.mp3?rlkey=ep6uhd01jmbmx3hn7r975jbvi&st=4bo9tg0t&dl=0", "Don't You Love Me", "LUCKI", days_be4_storm_image],
     ],
     [
         ["https://dl.dropbox.com/scl/fi/enuh8a19az24bb8pv3bx0/Ticket.mp3?rlkey=qd12kzucwnheifuy7xa1pkkdp&st=l6ecxpkd&dl=0", "Ticket", "Chief Keef", dedication_image],
@@ -231,6 +232,14 @@ let all = [
         ["https://dl.dropbox.com/scl/fi/wy42xp4lndzr4s6gyd4j5/Ain-t-Coming-Back.mp3?rlkey=z3ed5th7l0xdytzfzyptltorb&st=aerxqtzv&dl=0", "Ain't Coming Back", "Future", wizrd_image],
         ["https://dl.dropbox.com/scl/fi/8uw7mf5k7frp15c55bd5c/Tricks-On-Me.mp3?rlkey=db3fr0h3nep8w85ly8bml5l2v&st=z76lxyk7&dl=0", "Tricks On Me", "Future", wizrd_image],
     ],
+    [
+        ["https://dl.dropbox.com/scl/fi/0ybd4c3ek1pko46iaac1l/10-000-Weeping-Choirs.mp3?rlkey=cmohkazdleia691grhdc0ifkn&st=k6nu8anh&dl=0", "10,000 Weeping Choirs", "Sematary", warboy_image],
+        ["https://dl.dropbox.com/scl/fi/705lfptbtnfhy1rndiac3/Hail-Mary.mp3?rlkey=tq5xihs48ury1gqttg7ttsfdc&st=yrdvm0l5&dl=0", "Hail Mary", "Sematary", warboy_image],
+        ["https://dl.dropbox.com/scl/fi/z3dtymcnig3ih5ojmec54/Redbull-Addict.mp3?rlkey=x87628sotjn5mclxde0lpx0pr&st=i2wyaczi&dl=0", "Redbull Addict", "Sematary", warboy_image],
+        ["https://dl.dropbox.com/scl/fi/ixgsfkaugxbvgwhb2lx4x/AK47.mp3?rlkey=uelowq8dzhygbxy74a0ktl1vt&st=a1dhc8x4&dl=0", "AK47", "Sematary", warboy_image],
+        ["https://dl.dropbox.com/scl/fi/rwhaaxf0bzz272pivuy19/Forever-Box.mp3?rlkey=1pvjsg37uzpz69kyxcobrojtl&st=i18so25i&dl=0", "Forever Box", "Sematary, Ego Mackey", warboy_image],
+        ["https://dl.dropbox.com/scl/fi/oasgcoth6fuhycrxf2u4d/Skulls.mp3?rlkey=8dyilrfq9nw9gbnd0rqm2byyx&st=yjgga2j5&dl=0", "Skulls", "Sematary", warboy_image],
+    ],
 ]
 
 let info = [
@@ -240,7 +249,7 @@ let info = [
     ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image, "rgb(46, 120, 171)"],
     ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image, "rgb(189, 21, 21)"],
     ["DS2", "Future • Album • 2015", ds2_image, "rgb(28, 72, 102)"],
-    ["Sunset", "LUCKI • Single • 2017", sunset_image, "rgb(191, 98, 141)"],
+    ["Days Be4 Storm", "LUCKI • Single • 2017", days_be4_storm_image, "rgb(191, 98, 141)"],
     ["Dedication", "Chief Keef • Album • 2017", dedication_image, "rgb(184, 166, 163)"],
     ["Working On Dying", "Bladee • Album • 2017", working_on_dying_image, "rgb(105, 31, 18)"],
     ["Slime Season 3", "Young Thug • Album • 2016", ss3_image, "rgb(87, 30, 25)"],
@@ -249,6 +258,7 @@ let info = [
     ["JEFFERY", "Young Thug • Album • 2016", jeffery_image, "rgb(111, 122, 171)"],
     ["EVOL", "Future • Album • 2016", evol_image, "rgb(49, 55, 66)"],
     ["Future Hndrxx Presents: The WIZRD", "Future • Album • 2016", wizrd_image, "rgb(163, 59, 15)"],
+    ["Warboy", "Sematary • Album • 2020", warboy_image, "rgb(179, 52, 64)"],
 ]
 
 let state = true
