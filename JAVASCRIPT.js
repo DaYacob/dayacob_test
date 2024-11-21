@@ -14,6 +14,7 @@ const jeffery_image = "./Photos/Jeffery.png"
 const evol_image = "./Photos/Evol.png"
 const wizrd_image = "./Photos/The Wizrd.png"
 const warboy_image = "./Photos/Warboy.png"
+const grave_house_image = "./Photos/Grave House.png"
 
 const play_button = "./Photos/Play.png"
 const pause_button = "./Photos/Pause.png"
@@ -33,7 +34,8 @@ const volumeIcon = document.getElementById("volume-icon")
 const progress = document.getElementById("progress")
 const searchbox = document.getElementById("search-bar")
 const searching = document.getElementById("searching")
-const library = document.querySelectorAll(".library img")
+const libraryImage = document.querySelectorAll("library-img")
+const library = document.getElementById("library")
 
 const image = document.querySelector(".album-img")
 const title = document.getElementById("album-name")
@@ -240,25 +242,40 @@ let all = [
         ["https://dl.dropbox.com/scl/fi/rwhaaxf0bzz272pivuy19/Forever-Box.mp3?rlkey=1pvjsg37uzpz69kyxcobrojtl&st=i18so25i&dl=0", "Forever Box", "Sematary, Ego Mackey", warboy_image],
         ["https://dl.dropbox.com/scl/fi/oasgcoth6fuhycrxf2u4d/Skulls.mp3?rlkey=8dyilrfq9nw9gbnd0rqm2byyx&st=yjgga2j5&dl=0", "Skulls", "Sematary", warboy_image],
     ],
+    [
+        ["https://dl.dropbox.com/scl/fi/dwyg3f0wjf0kgjsye5mcg/Fury-Road.mp3?rlkey=hfp2twp2scmj293f6qwmo7au7&st=pel7sm20&dl=0", "Fury Road", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/o8lpylk2r8vnwy1sukdbf/Nevada.mp3?rlkey=d56vgw0uv9dt6zmp9j37p9ieh&st=p3hhw7ek&dl=0", "Nevada", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/v0t65fldwsjfdzxsi5yzs/Interstate.mp3?rlkey=wd4szjgzsmrech8abkc8xrk6s&st=i2xjqimx&dl=0", "Interstate", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/k8mt8rrhgxi0d5q4imyca/New-Rocks.mp3?rlkey=f57fsgne31sjdkd818lpa5y41&st=o1k3m93g&dl=0", "New Rocks", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/v42olp30rnqghcmrgn7m0/Goat-Man.mp3?rlkey=pt1g6xy9xv02nzut91ujqp6ch&st=8g3z1tb5&dl=0", "Goat Man", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/4ehrjnz4w637j5l3jcz2a/Orbs.mp3?rlkey=9dviw5hsdy65x0pnw2coxmvbw&st=6pozkjs4&dl=0", "Orbs", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/1ahsvv2o3caoaqpj9lm6p/Skin-Mask.mp3?rlkey=e2g9bywt60opvb1ciy7bvyzp4&st=vsgw96iz&dl=0", "Skin Mask", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/wvqlrnr2iwdt22flwq9cn/Dead-By-Dawn.mp3?rlkey=l0iwbc81390tllovdrw3f5ufc&st=e8zzgah7&dl=0", "Dead By Dawn", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/7fdne69wz6aqr1qzthl3w/Fury-Road-2.mp3?rlkey=chhqiamjqjzoxssvczbi6c25w&st=whtmzf9u&dl=0", "Fury Road 2", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/8yzwwru44see25zoaqnzb/Ready-For-The-House.mp3?rlkey=hj6kp3olb3joqgwd47o8b7q1j&st=8g23il12&dl=0", "Ready For The House", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/4x9buvyn3tzzc90ypem8o/Stand-Your-Ground.mp3?rlkey=bvfpahc634yzpvu25lva4aams&st=tiy7krxj&dl=0", "Stand Your Ground", "Sematary, Ghost Mountain", grave_house_image],
+        ["https://dl.dropbox.com/scl/fi/6yys8amydmkz1g80eckaw/Broken-Angel-Hospital.mp3?rlkey=8rkflwimj9yi4mdngn13jvkre&st=z3sb5x7c&dl=0", "Broken Angel Hospital", "Sematary, Ghost Mountain", grave_house_image],
+    ],
 ]
 
 let info = [
-    ["Monster", "Future • Album • 2014", monster_image, "rgb(46, 28, 22)"],
-    ["Save Me", "Chief Keef • Single • 2014", save_me_image, "rgb(71, 74, 62)"],
-    ["Pick Up The Phone", "Young Thug, Travis Scott, Quavo • Single • 2016", pick_up_the_phone_image, "rgb(148, 24, 13)"],
-    ["Days Before Rodeo", "Travis Scott • Album • 2014", days_before_rodeo_image, "rgb(46, 120, 171)"],
-    ["Rainbow Bridge 3", "Sematary • Album • 2021", rainbow_bridge_3_image, "rgb(189, 21, 21)"],
-    ["DS2", "Future • Album • 2015", ds2_image, "rgb(28, 72, 102)"],
-    ["Days Be4 Storm", "LUCKI • Single • 2017", days_be4_storm_image, "rgb(191, 98, 141)"],
-    ["Dedication", "Chief Keef • Album • 2017", dedication_image, "rgb(184, 166, 163)"],
-    ["Working On Dying", "Bladee • Album • 2017", working_on_dying_image, "rgb(105, 31, 18)"],
-    ["Slime Season 3", "Young Thug • Album • 2016", ss3_image, "rgb(87, 30, 25)"],
-    ["Almighty So", "Chief Keef • Album • 2013", almighty_so_image, "rgb(61, 132, 156)"],
-    ["Without Warning", "21 Savage, Offset, Metro Boomin • Album • 2017", without_warning_image, "rgb(189, 21, 21)"],
-    ["JEFFERY", "Young Thug • Album • 2016", jeffery_image, "rgb(111, 122, 171)"],
-    ["EVOL", "Future • Album • 2016", evol_image, "rgb(49, 55, 66)"],
-    ["Future Hndrxx Presents: The WIZRD", "Future • Album • 2016", wizrd_image, "rgb(163, 59, 15)"],
-    ["Warboy", "Sematary • Album • 2020", warboy_image, "rgb(179, 52, 64)"],
+    ["Monster", "Future \u2022 Album \u2022 2014", monster_image, "rgb(46, 28, 22)"],
+    ["Save Me", "Chief Keef u2022 Single \u2022 2014", save_me_image, "rgb(71, 74, 62)"],
+    ["Pick Up The Phone", "Young Thug, Travis Scott, Quavo \u2022 Single \u2022 2016", pick_up_the_phone_image, "rgb(148, 24, 13)"],
+    ["Days Before Rodeo", "Travis Scott \u2022 Album \u2022 2014", days_before_rodeo_image, "rgb(46, 120, 171)"],
+    ["Rainbow Bridge 3", "Sematary \u2022 Album \u2022 2021", rainbow_bridge_3_image, "rgb(189, 21, 21)"],
+    ["DS2", "Future \u2022 Album \u2022 2015", ds2_image, "rgb(28, 72, 102)"],
+    ["Days Be4 Storm", "LUCKI \u2022 Single \u2022 2017", days_be4_storm_image, "rgb(191, 98, 141)"],
+    ["Dedication", "Chief Keef \u2022 Album \u2022 2017", dedication_image, "rgb(184, 166, 163)"],
+    ["Working On Dying", "Bladee \u2022 Album \u2022 2017", working_on_dying_image, "rgb(105, 31, 18)"],
+    ["Slime Season 3", "Young Thug \u2022 Album \u2022 2016", ss3_image, "rgb(87, 30, 25)"],
+    ["Almighty So", "Chief Keef \u2022 Album \u2022 2013", almighty_so_image, "rgb(61, 132, 156)"],
+    ["Without Warning", "21 Savage, Offset, Metro Boomin \u2022 Album \u2022 2017", without_warning_image, "rgb(189, 21, 21)"],
+    ["JEFFERY", "Young Thug \u2022 Album \u2022 2016", jeffery_image, "rgb(111, 122, 171)"],
+    ["EVOL", "Future \u2022 Album \u2022 2016", evol_image, "rgb(49, 55, 66)"],
+    ["Future Hndrxx Presents: The WIZRD", "Future \u2022 Album \u2022 2016", wizrd_image, "rgb(163, 59, 15)"],
+    ["Warboy", "Sematary \u2022 EP \u2022 2020", warboy_image, "rgb(179, 52, 64)"],
+    ["Grave House", "Sematary, Ghost Mountain \u2022 Album \u2022 2019", grave_house_image, "rgb(122, 5, 17)"],
 ]
 
 let state = true
@@ -284,15 +301,26 @@ for (let i = 0; i < all.length; i++){
             currentSong.volume = volume.value / 1000
         }
     }
+    if (songsList.childNodes.length === 1){
+        updateSongs()
+        finishSong()
+        checkColour()
+        addButton()
+        progression()
+    }
+    createAlbum(i)
 }
 
-finishSong()
-updateSongs()
-checkColour()
-addButton()
-progression()
-
 let dragging = false
+
+function createAlbum(i){
+    const newAlbum = document.createElement("img")
+    newAlbum.identifier = info[i][0] + " " + info[i][1]
+    newAlbum.classList.add("library-img")
+    newAlbum.addEventListener("click", () => setAlbum(i))
+    newAlbum.src = info[i][2]
+    library.appendChild(newAlbum)
+}
 
 function updateColor(){
     albumTitle.style.background = `linear-gradient(to bottom, ${currentInfo[3]}, ${"rgb(30, 30, 30)"})`
@@ -429,13 +457,13 @@ function updateSongs(){
         newSong.identifier = i+1
 
         if (i+1 >= 1000){
-            newSong.innerHTML = `${"  "} ${i+1}`
+            newSong.innerHTML = `${"\u2006\u2006"} ${i+1}`
         } else if (i+1 >= 100){
-            newSong.innerHTML = `${"      "} ${i+1}`
+            newSong.innerHTML = `${"\u2006\u2006\u2006\u2006\u2006\u2006"} ${i+1}`
         } else if (i+1 >= 10){
-            newSong.innerHTML = `${"          "} ${i+1}`
+            newSong.innerHTML = `${"\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006"} ${i+1}`
         } else {
-            newSong.innerHTML = `${"              "} ${i+1}`
+            newSong.innerHTML = `${"\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006"} ${i+1}`
         }
 
         image.src = currentInfo[2]
@@ -638,15 +666,17 @@ searchbox.addEventListener("input", function(){
     const initialInput = searching.value.toLowerCase()
     const tags = initialInput.split(/\s+/)
 
-    library.forEach(imagecover => {
-        const identifier = imagecover.getAttribute("identifier").toLowerCase()
+    const instances = document.getElementsByClassName("library-img")
+
+    for (let i = 0; i < instances.length; i++){
+        const identifier = instances[i].identifier.toLowerCase()
         const matches = tags.every(tag => identifier.includes(tag))
         if (matches) {
-            imagecover.style.display = "block"
+            instances[i].style.display = "block"
         } else {
-            imagecover.style.display = "none"
+            instances[i].style.display = "none"
         }
-    })
+    }
 })
 
 document.addEventListener("keydown", function(event){
