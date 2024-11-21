@@ -49,7 +49,7 @@
     color: white;
 }
 
-.library{
+#library{
     transform: translateY(12.2%);
     background-color: rgb(18, 18, 18);
     position: fixed;
@@ -64,7 +64,7 @@
     z-index: 2;
 }
 
-.library img{
+#library img{
     justify-self: center;
     max-width: 85%;
     max-height: 85%;
@@ -118,7 +118,7 @@
     display: none;
 }
 
-.library::-webkit-scrollbar{
+#library::-webkit-scrollbar{
     display: none;
 }
 
