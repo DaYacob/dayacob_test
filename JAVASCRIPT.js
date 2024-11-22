@@ -264,7 +264,7 @@ let info = [
     ["Pick Up The Phone", "Young Thug, Travis Scott, Quavo", "2016", "Single", "rgb(148, 24, 13)", pick_up_the_phone_image],
     ["Days Before Rodeo", "Travis Scott", "2014", "Album", "rgb(46, 120, 171)", days_before_rodeo_image],
     ["Rainbow Bridge 3", "Sematary", "2021", "Album", "rgb(189, 21, 21)", rainbow_bridge_3_image],
-    ["DS2", "Future", "2015", "Album", "rgb(28, 72, 102))", ds2_image],
+    ["DS2", "Future", "2015", "Album", "rgb(28, 72, 102)", ds2_image],
     ["Days Be4 Storm", "LUCKI", "2017", "Single", "rgb(191, 98, 141)", days_be4_storm_image],
     ["Dedication", "Chief Keef", "2017", "Album", "rgb(184, 166, 163)", dedication_image],
     ["Working On Dying", "Bladee", "2017", "Album", "rgb(105, 31, 18)", working_on_dying_image],
