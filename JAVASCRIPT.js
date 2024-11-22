@@ -259,24 +259,42 @@ let all = [
 ]
 
 let info = [
-    ["Monster", "Future \u2022 Album \u2022 2014", monster_image, "rgb(46, 28, 22)"],
-    ["Save Me", "Chief Keef u2022 Single \u2022 2014", save_me_image, "rgb(71, 74, 62)"],
-    ["Pick Up The Phone", "Young Thug, Travis Scott, Quavo \u2022 Single \u2022 2016", pick_up_the_phone_image, "rgb(148, 24, 13)"],
-    ["Days Before Rodeo", "Travis Scott \u2022 Album \u2022 2014", days_before_rodeo_image, "rgb(46, 120, 171)"],
-    ["Rainbow Bridge 3", "Sematary \u2022 Album \u2022 2021", rainbow_bridge_3_image, "rgb(189, 21, 21)"],
-    ["DS2", "Future \u2022 Album \u2022 2015", ds2_image, "rgb(28, 72, 102)"],
-    ["Days Be4 Storm", "LUCKI \u2022 Single \u2022 2017", days_be4_storm_image, "rgb(191, 98, 141)"],
-    ["Dedication", "Chief Keef \u2022 Album \u2022 2017", dedication_image, "rgb(184, 166, 163)"],
-    ["Working On Dying", "Bladee \u2022 Album \u2022 2017", working_on_dying_image, "rgb(105, 31, 18)"],
-    ["Slime Season 3", "Young Thug \u2022 Album \u2022 2016", ss3_image, "rgb(87, 30, 25)"],
-    ["Almighty So", "Chief Keef \u2022 Album \u2022 2013", almighty_so_image, "rgb(61, 132, 156)"],
-    ["Without Warning", "21 Savage, Offset, Metro Boomin \u2022 Album \u2022 2017", without_warning_image, "rgb(189, 21, 21)"],
-    ["JEFFERY", "Young Thug \u2022 Album \u2022 2016", jeffery_image, "rgb(111, 122, 171)"],
-    ["EVOL", "Future \u2022 Album \u2022 2016", evol_image, "rgb(49, 55, 66)"],
-    ["Future Hndrxx Presents: The WIZRD", "Future \u2022 Album \u2022 2016", wizrd_image, "rgb(163, 59, 15)"],
-    ["Warboy", "Sematary \u2022 EP \u2022 2020", warboy_image, "rgb(179, 52, 64)"],
-    ["Grave House", "Sematary, Ghost Mountain \u2022 Album \u2022 2019", grave_house_image, "rgb(122, 5, 17)"],
+    ["Monster", "Future", "2014", "Album", "rgb(46, 28, 22)", monster_image],
+    ["Save Me", "Chief Keef", "2014", "Single", "rgb(71, 74, 62)", save_me_image],
+    ["Pick Up The Phone", "Young Thug, Travis Scott, Quavo", "2016", "Single", "rgb(148, 24, 13)", pick_up_the_phone_image],
+    ["Days Before Rodeo", "Travis Scott", "2014", "Album", "rgb(46, 120, 171)", days_before_rodeo_image],
+    ["Rainbow Bridge 3", "Sematary", "2021", "Album", "rgb(189, 21, 21)", rainbow_bridge_3_image],
+    ["DS2", "Future", "2015", "Album", "rgb(28, 72, 102))", ds2_image],
+    ["Days Be4 Storm", "LUCKI", "2017", "Single", "rgb(191, 98, 141)", days_be4_storm_image],
+    ["Dedication", "Chief Keef", "2017", "Album", "rgb(184, 166, 163)", dedication_image],
+    ["Working On Dying", "Bladee", "2017", "Album", "rgb(105, 31, 18)", working_on_dying_image],
+    ["Slime Season 3", "Young Thug", "2016", "Album", "rgb(87, 30, 25)", ss3_image],
+    ["Almighty So", "Chief Keef", "2013", "Album", "rgb(61, 132, 156)", almighty_so_image],
+    ["Without Warning", "21 Savage, Offset, Metro Boomin", "2017", "Album", "rgb(189, 21, 21)", without_warning_image],
+    ["JEFFERY", "Young Thug", "2016", "Album", "rgb(111, 122, 171)", jeffery_image],
+    ["EVOL", "Future", "2016", "Album", "rgb(49, 55, 66)", evol_image],
+    ["Future Hndrxx Presents: The WIZRD", "Future", "2019", "Album", "rgb(163, 59, 15)", wizrd_image],
+    ["Warboy", "Sematary", "2020", "EP", "rgb(179, 52, 64)", warboy_image],
+    ["Grave House", "Sematary, Ghost Mountain", "2019", "Album", "rgb(122, 5, 17)", grave_house_image],
 ]
+
+let combined = info.map((item, index) => {
+    return {info: item, all: all[index]}
+})
+
+combined.sort((a, b) => {
+    for (let i = 1; i < a.info.length; i++) {
+        let valA = a.info[i].split(", ")[0]
+        let valB = b.info[i].split(", ")[0]
+
+        if (valA < valB) return -1
+        if (valA > valB) return 1
+    }
+    return 0
+})
+
+info = combined.map(item => item.info)
+all = combined.map(item => item.all)
 
 let state = true
 let shuffled = false
@@ -308,22 +326,29 @@ for (let i = 0; i < all.length; i++){
         addButton()
         progression()
     }
-    createAlbum(i)
+}
+
+for (let j = 0; j < info.length; j++) {
+    const str = info[j]
+    if (!songsList.textContent.includes(str)) {
+        createAlbum(j)
+    }
 }
 
 let dragging = false
 
 function createAlbum(i){
     const newAlbum = document.createElement("img")
-    newAlbum.identifier = info[i][0] + " " + info[i][1]
+    newAlbum.identifier = info[i][0] + " " + info[i][1] + " " + info[i][2] + " " + info[i][3]
+    newAlbum.id = "settag"
     newAlbum.classList.add("library-img")
     newAlbum.addEventListener("click", () => setAlbum(i))
-    newAlbum.src = info[i][2]
+    newAlbum.src = info[i][5]
     library.appendChild(newAlbum)
 }
 
 function updateColor(){
-    albumTitle.style.background = `linear-gradient(to bottom, ${currentInfo[3]}, ${"rgb(30, 30, 30)"})`
+    albumTitle.style.background = `linear-gradient(to bottom, ${currentInfo[4]}, ${"rgb(30, 30, 30)"})`
 }
 
 function progression(){
@@ -457,18 +482,18 @@ function updateSongs(){
         newSong.identifier = i+1
 
         if (i+1 >= 1000){
-            newSong.innerHTML = `${"\u2006\u2006"} ${i+1}`
+            newSong.innerHTML = `${"  "} ${i+1}`
         } else if (i+1 >= 100){
-            newSong.innerHTML = `${"\u2006\u2006\u2006\u2006\u2006\u2006"} ${i+1}`
+            newSong.innerHTML = `${"      "} ${i+1}`
         } else if (i+1 >= 10){
-            newSong.innerHTML = `${"\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006"} ${i+1}`
+            newSong.innerHTML = `${"          "} ${i+1}`
         } else {
-            newSong.innerHTML = `${"\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006\u2006"} ${i+1}`
+            newSong.innerHTML = `${"              "} ${i+1}`
         }
 
-        image.src = currentInfo[2]
+        image.src = currentInfo[5]
         title.innerHTML = currentInfo[0]
-        desc.innerHTML = currentInfo[1]
+        desc.innerHTML = currentInfo[1] + " • " + currentInfo[2] + " • " + currentInfo[3]
     
         const newH = document.createElement("h4")
         newH.innerHTML = `${list[i][1]}`
