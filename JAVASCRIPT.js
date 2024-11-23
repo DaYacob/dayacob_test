@@ -21,6 +21,8 @@ const pause_button = "./Photos/Pause.png"
 const volume_button = "./Photos/Volume.png"
 const mute_button = "./Photos/Mute.png"
 
+const liked_image = "./Photos/Liked.png"
+
 const ctrlIcon = document.getElementById("ctrlIcon")
 const name = document.querySelectorAll(".name")
 const feature = document.querySelectorAll(".feature")
@@ -258,6 +260,13 @@ let all = [
     ],
 ]
 
+let liked = [
+]
+
+let playlistInfo = [
+    ["Liked Songs", "DaYacob Music", "N/A Liked Songs", "Playlist", "rgb(89, 61, 191)", liked_image]
+]
+
 let info = [
     ["Monster", "Future", "2014", "Album", "rgb(46, 28, 22)", monster_image],
     ["Save Me", "Chief Keef", "2014", "Single", "rgb(71, 74, 62)", save_me_image],
@@ -302,45 +311,76 @@ let repeated = false
 let order = 0
 
 let listened = [0]
-let index = all[0]
+let index = liked
 let list = index
 
 let currentSong = NaN
-let currentInfo = info[0]
+let currentInfo = playlistInfo[0]
 
-for (let i = 0; i < all.length; i++){
-    for (let j = 0; j < all[i].length; j++){
-        const newAudio = new Audio(all[i][j][0])
-        newAudio.preload = "metadata"
-        all[i][j][0] = newAudio
-
-        if (isNaN(currentSong.duration)){
-            currentSong = all[0][0][0]
-            currentSong.volume = volume.value / 1000
+function unloadAudio(){
+    for (let i = 0; i < all.length; i++){
+        for (let j = 0; j < all[i].length; j++){
+            if (all[i][j][0] instanceof Audio){
+                all[i][j][0].src = ""
+                all[i][j][0].load()
+            } else {
+                all[i][j].push(all[i][j][0])
+            }
         }
     }
-    if (songsList.childNodes.length === 1){
-        updateSongs()
-        finishSong()
-        checkColour()
-        addButton()
-        progression()
+
+    for (let i = 0; i < liked.length; i++){
+        if (liked[i][0] instanceof Audio){
+            liked[i][0] = liked[i][4]
+        }
     }
 }
 
-for (let j = 0; j < info.length; j++) {
-    const str = info[j]
+function loadAudio(albumNum){
+    for (let i = 0; i < albumNum.length; i++){
+        const newAudio = new Audio(albumNum[i][4])
+        albumNum[i][0] = newAudio
+        newAudio.load()
+    }
+}
+
+unloadAudio()
+loadAudio(all[0])
+
+if (isNaN(currentSong.duration)){
+    currentSong = all[0][0][0]
+    currentSong.volume = volume.value / 1000
+}
+
+updateSongs()
+finishSong()
+checkColour()
+addButton()
+progression()
+
+createPlaylist()
+
+for (let i = 0; i < info.length; i++) {
+    const str = info[i]
     if (!songsList.textContent.includes(str)) {
-        createAlbum(j)
+        createAlbum(i)
     }
 }
 
 let dragging = false
 
+function createPlaylist(){
+    const newPlaylist = document.createElement("img")
+    newPlaylist.classList.add("library-img")
+    newPlaylist.identifier = "Liked Songs"
+    newPlaylist.addEventListener("click", () => setAlbum("liked"))
+    newPlaylist.src = liked_image
+    library.appendChild(newPlaylist)
+}
+
 function createAlbum(i){
     const newAlbum = document.createElement("img")
     newAlbum.identifier = info[i][0] + " " + info[i][1] + " " + info[i][2] + " " + info[i][3]
-    newAlbum.id = "settag"
     newAlbum.classList.add("library-img")
     newAlbum.addEventListener("click", () => setAlbum(i))
     newAlbum.src = info[i][5]
@@ -435,18 +475,26 @@ function finishSong(){
 }
 
 function updatePlayer(change){
-    if (change == true){
-        index = list
-    }
-    else{
-        index = all[findNext(currentSong)]
-    }
-
     currentSong.pause()
     currentSong.currentTime = 0
+
+    if (change == true){
+        index = list
+    } else {
+        if (list == liked){
+            index = liked
+        } else {
+            index = all[findNext(currentSong)]
+        }
+    }
+
     currentSong = index[order][0]
     currentSong.volume = volume.value / 1000
-    currentSong.play()
+
+    currentSong.addEventListener("canplaythrough", () => {
+        currentSong.play()
+    });
+
     state = false
     ctrlIcon.src=pause_button
 
@@ -467,6 +515,17 @@ function updatePlayer(change){
     resetColours()
     checkColour()
     progression()
+
+    //TESTING LIKE SYSTEM
+
+    if (liked.every(row => !row.includes(index[order][4]))){
+        newAudio = new Audio(index[order][4])
+        newAudio.preload = "metadata"
+        const copy = index[order].slice()
+        liked.push(copy)
+        const lastliked = liked[liked.length - 1]
+        lastliked[0] = newAudio
+    }
 }
 
 function updateSongs(){
@@ -475,6 +534,10 @@ function updateSongs(){
     }
 
     updateColor()
+
+    image.src = currentInfo[5]
+    title.innerHTML = currentInfo[0]
+    desc.innerHTML = currentInfo[1] + " • " + currentInfo[2] + " • " + currentInfo[3]
 
     for (let i = 0; i < list.length; i++){
         const newSong = document.createElement("div")
@@ -490,10 +553,6 @@ function updateSongs(){
         } else {
             newSong.innerHTML = `${"              "} ${i+1}`
         }
-
-        image.src = currentInfo[5]
-        title.innerHTML = currentInfo[0]
-        desc.innerHTML = currentInfo[1] + " • " + currentInfo[2] + " • " + currentInfo[3]
     
         const newH = document.createElement("h4")
         newH.innerHTML = `${list[i][1]}`
@@ -507,10 +566,16 @@ function updateSongs(){
     }
 }
 
-function setAlbum(setNum){
+function setAlbum(setTo){
     songsList.scrollTo(0, 0)
-    list = all[setNum]
-    currentInfo = info[setNum]
+    if (typeof setTo === "number"){
+        list = all[setTo]
+        currentInfo = info[setTo]
+    
+    } else {
+        list = liked
+        currentInfo = playlistInfo[0]
+    }
     updateSongs()
     addButton()
     checkColour()
@@ -539,6 +604,10 @@ function addButton(){
         button.addEventListener("click", function() {
             if (list[pos][0] != currentSong) {
                 order = pos
+                if (list != index){
+                    unloadAudio()
+                    loadAudio(list)
+                }
                 updatePlayer(true)
                 removeRepetition()
             }
@@ -614,7 +683,7 @@ function removeRepetition(){
 
 function skip(){
     if (shuffled == false){
-        if (order == index.length - 1) {
+        if (order == index.length - 1){
             order = 0
         }
         else {
@@ -636,17 +705,19 @@ function rewind(){
 }
 
 function playPause(){
-    if (order > -1) {
-        checkColour()
-        if (state === true){
-            currentSong.play()
-            ctrlIcon.src=pause_button
-            state = false
-        }
-        else {
-            currentSong.pause()
-            ctrlIcon.src=play_button
-            state = true
+    if (!isNaN(currentSong.duration)){
+        if (order > -1) {
+            checkColour()
+            if (state === true){
+                currentSong.play()
+                ctrlIcon.src=pause_button
+                state = false
+            }
+            else {
+                currentSong.pause()
+                ctrlIcon.src=play_button
+                state = true
+            }
         }
     }
 }
