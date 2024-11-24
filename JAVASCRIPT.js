@@ -480,6 +480,7 @@ function updatePlayer(){
 
     likeButton.style.display = "block"
     
+    
     currentSong = index[order][0]
     currentSong.volume = volume.value / 1000
 
@@ -552,6 +553,25 @@ function likeSong(){
         if (list == liked){
             updateSongs()
             addButton()
+
+            if (liked.length == 0){
+                currentSong.pause()
+                currentSong.currentTime = 0
+                currentSong = NaN
+                likeButton.style.display = "none"
+
+                name.forEach(x => {
+                    x.innerHTML = ""
+                })
+                feature.forEach(x => {
+                    x.innerHTML = ""
+                })
+                current.forEach(x => {
+                    x.src = ""
+                })
+            } else {
+                nextSong()
+            }
         }
     }
 }
