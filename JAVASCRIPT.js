@@ -485,8 +485,10 @@ function updatePlayer(){
     currentSong.volume = volume.value / 1000
 
     currentSong.addEventListener("canplaythrough", () => {
-        currentSong.play()
-    });
+        if (!isNaN(currentSong.duration)){
+            currentSong.play()
+        }
+    })
 
     if (liked.every(row => !row.includes(index[order][4]))){
         likeButton.src = save_image
@@ -570,7 +572,8 @@ function likeSong(){
                     x.src = ""
                 })
             } else {
-                nextSong()
+                order = 0
+                updatePlayer()
             }
         }
     }
