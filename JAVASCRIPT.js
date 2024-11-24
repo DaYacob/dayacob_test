@@ -478,12 +478,8 @@ function updatePlayer(){
         currentSong.currentTime = 0
     }
 
-    if (index == liked){
-        likeButton.style.display = "none"
-    } else {
-        likeButton.style.display = "block"
-    }
-
+    likeButton.style.display = "block"
+    
     currentSong = index[order][0]
     currentSong.volume = volume.value / 1000
 
