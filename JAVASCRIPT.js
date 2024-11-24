@@ -407,9 +407,14 @@ function progression(){
 
     currentSong.ontimeupdate = function(){
         if (!dragging){
-            progress.value = currentSong.currentTime
-            const timestamp = (progress.value / progress.max) * 100
-            progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${timestamp}%, gray ${timestamp}%)`)
+            if (!isNaN(currentSong.duration)){
+                progress.value = currentSong.currentTime
+                const timestamp = (progress.value / progress.max) * 100
+                progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${timestamp}%, gray ${timestamp}%)`)
+            } else {
+                progress.value = 0
+                progress.style.setProperty("--slider-background", `linear-gradient(to right, white ${0}%, gray ${0}%)`)
+            }
         }
     }
 }
