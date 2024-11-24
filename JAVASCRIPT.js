@@ -23,6 +23,9 @@ const mute_button = "./Photos/Mute.png"
 
 const liked_image = "./Photos/Liked.png"
 
+const saved_image = "./Photos/Saved.png"
+const save_image = "./Photos/Save.png"
+
 const ctrlIcon = document.getElementById("ctrlIcon")
 const name = document.querySelectorAll(".name")
 const feature = document.querySelectorAll(".feature")
@@ -38,6 +41,7 @@ const searchbox = document.getElementById("search-bar")
 const searching = document.getElementById("searching")
 const libraryImage = document.querySelectorAll("library-img")
 const library = document.getElementById("library")
+const likeButton = document.getElementById("liked")
 
 const image = document.querySelector(".album-img")
 const title = document.getElementById("album-name")
@@ -262,9 +266,10 @@ let all = [
 
 let liked = [
 ]
+let numLiked = 0
 
 let playlistInfo = [
-    ["Liked Songs", "DaYacob Music", "N/A Liked Songs", "Playlist", "rgb(89, 61, 191)", liked_image]
+    ["Liked Songs", "DaYacob Music", numLiked + " Liked Songs", "Playlist", "rgb(89, 61, 191)", liked_image]
 ]
 
 let info = [
@@ -347,16 +352,9 @@ function loadAudio(albumNum){
 unloadAudio()
 loadAudio(all[0])
 
-if (isNaN(currentSong.duration)){
-    currentSong = all[0][0][0]
-    currentSong.volume = volume.value / 1000
-}
-
 updateSongs()
-finishSong()
 checkColour()
 addButton()
-progression()
 
 createPlaylist()
 
@@ -475,8 +473,10 @@ function finishSong(){
 }
 
 function updatePlayer(change){
-    currentSong.pause()
-    currentSong.currentTime = 0
+    if (currentSong){
+        currentSong.pause()
+        currentSong.currentTime = 0
+    }
 
     if (change == true){
         index = list
@@ -488,12 +488,24 @@ function updatePlayer(change){
         }
     }
 
+    if (index == liked){
+        likeButton.style.display = "none"
+    } else {
+        likeButton.style.display = "block"
+    }
+
     currentSong = index[order][0]
     currentSong.volume = volume.value / 1000
 
     currentSong.addEventListener("canplaythrough", () => {
         currentSong.play()
     });
+
+    if (liked.every(row => !row.includes(index[order][4]))){
+        likeButton.src = save_image
+    } else {
+        likeButton.src = saved_image
+    }
 
     state = false
     ctrlIcon.src=pause_button
@@ -515,16 +527,46 @@ function updatePlayer(change){
     resetColours()
     checkColour()
     progression()
+}
 
-    //TESTING LIKE SYSTEM
-
+function likeSong(){
     if (liked.every(row => !row.includes(index[order][4]))){
+        likeButton.src = saved_image
         newAudio = new Audio(index[order][4])
         newAudio.preload = "metadata"
         const copy = index[order].slice()
         liked.push(copy)
         const lastliked = liked[liked.length - 1]
         lastliked[0] = newAudio
+
+        numLiked++
+        if (numLiked == 1){
+            playlistInfo[0][2] = numLiked + " Liked Song"
+        } else {
+            playlistInfo[0][2] = numLiked + " Liked Songs"
+        }
+
+        if (list == liked){
+            updateSongs()
+        }
+    } else {
+        likeButton.src = save_image
+
+        let found = liked.findIndex(array => array.includes(index[order][4]));
+        liked.splice(found, 1)
+
+        numLiked--
+        if (numLiked == 1){
+            playlistInfo[0][2] = numLiked + " Liked Song"
+        } else {
+            playlistInfo[0][2] = numLiked + " Liked Songs"
+        }
+
+        if (list == liked){
+            updateSongs()
+        }
+
+        console.log(liked)
     }
 }
 
@@ -723,28 +765,32 @@ function playPause(){
 }
 
 function nextSong(){
-    if (order > index.length){
-        order = 0
-    }
-    else {
-        skip()
-    }
-    updatePlayer(false)
-    removeRepetition()
-}
-
-function previousSong(){
-    if (order > -1) {
+    if (currentSong){
         if (order > index.length){
             order = 0
-            resetColours()
-            checkColour()
         }
         else {
-            rewind()
+            skip()
         }
         updatePlayer(false)
         removeRepetition()
+    }
+}
+
+function previousSong(){
+    if (currentSong){
+        if (order > -1) {
+            if (order > index.length){
+                order = 0
+                resetColours()
+                checkColour()
+            }
+            else {
+                rewind()
+            }
+            updatePlayer(false)
+            removeRepetition()
+        }
     }
 }
 
