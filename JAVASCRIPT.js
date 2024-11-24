@@ -468,24 +468,14 @@ function finishSong(){
         if (repeated == false){
             skip()
         }
-        updatePlayer(false)
+        updatePlayer()
     })
 }
 
-function updatePlayer(change){
+function updatePlayer(){
     if (currentSong){
         currentSong.pause()
         currentSong.currentTime = 0
-    }
-
-    if (change == true){
-        index = list
-    } else {
-        if (list == liked){
-            index = liked
-        } else {
-            index = all[findNext(currentSong)]
-        }
     }
 
     if (index == liked){
@@ -548,6 +538,7 @@ function likeSong(){
 
         if (list == liked){
             updateSongs()
+            addButton()
         }
     } else {
         likeButton.src = save_image
@@ -564,9 +555,8 @@ function likeSong(){
 
         if (list == liked){
             updateSongs()
+            addButton()
         }
-
-        console.log(liked)
     }
 }
 
@@ -650,7 +640,8 @@ function addButton(){
                     unloadAudio()
                     loadAudio(list)
                 }
-                updatePlayer(true)
+                index = list
+                updatePlayer()
                 removeRepetition()
             }
             else if (state == true) {
@@ -772,7 +763,7 @@ function nextSong(){
         else {
             skip()
         }
-        updatePlayer(false)
+        updatePlayer()
         removeRepetition()
     }
 }
@@ -788,7 +779,7 @@ function previousSong(){
             else {
                 rewind()
             }
-            updatePlayer(false)
+            updatePlayer()
             removeRepetition()
         }
     }
