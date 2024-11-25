@@ -584,6 +584,12 @@ function likeSong(){
     }
 }
 
+function updateImage(imageElement, newSrc) {
+    const timestamp = new Date().getTime()
+    const separator = newSrc.includes('?') ? '&' : '?'
+    imageElement.src = `${newSrc}${separator}t=${timestamp}`
+}
+
 function updateSongs(){
     while (songsList.firstChild) {
         songsList.removeChild(songsList.firstChild)
@@ -591,7 +597,7 @@ function updateSongs(){
 
     updateColor()
 
-    image.src = currentInfo[5]
+    updateImage(image, currentInfo[5])
     title.innerHTML = currentInfo[0]
     desc.innerHTML = currentInfo[1] + " • " + currentInfo[2] + " • " + currentInfo[3]
 
