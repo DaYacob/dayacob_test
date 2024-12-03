@@ -15,6 +15,7 @@ const evol_image = "./Photos/Evol.png"
 const wizrd_image = "./Photos/The Wizrd.png"
 const warboy_image = "./Photos/Warboy.png"
 const grave_house_image = "./Photos/Grave House.png"
+const ss2_image = "./Photos/Slime Season 2.png"
 
 const play_button = "./Photos/Play.png"
 const pause_button = "./Photos/Pause.png"
@@ -262,6 +263,30 @@ let all = [
         ["https://dl.dropbox.com/scl/fi/4x9buvyn3tzzc90ypem8o/Stand-Your-Ground.mp3?rlkey=bvfpahc634yzpvu25lva4aams&st=tiy7krxj&dl=0", "Stand Your Ground", "Sematary, Ghost Mountain", grave_house_image],
         ["https://dl.dropbox.com/scl/fi/6yys8amydmkz1g80eckaw/Broken-Angel-Hospital.mp3?rlkey=8rkflwimj9yi4mdngn13jvkre&st=z3sb5x7c&dl=0", "Broken Angel Hospital", "Sematary, Ghost Mountain", grave_house_image],
     ],
+    [
+        ["https://dl.dropbox.com/scl/fi/qipn7dip79mgpvmqmq0tp/Big-Racks.mp3?rlkey=94ehurehk5t8y6f7251crld7n&st=cdwjpugw&dl=0", "Big Racks", "Young Thug, Lil Uzi Vert", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/6sbo2jhttq8sgp9akpjsa/Thief-In-The-Night.mp3?rlkey=ixbfoc6impant2jqqp3fyl1nq&st=blotazi8&dl=0", "Thief In The Night", "Young Thug, Trouble", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/ynmzgobpubwbwksrxb4gl/Don-t-Know.mp3?rlkey=4o77givrmgyze51dckpaurx3y&st=2enayzw8&dl=0", "Don't Know", "Young Thug, Shad Da God", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/z0l8gwkzh94359i77famo/Hey-I.mp3?rlkey=tf3j7q9lnune6rmhv5my5pvn7&st=d0z8zylr&dl=0", "Hey, I", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/650d3kcc6nrxze9qwz94e/She-Notice.mp3?rlkey=k4ryhmygj53n1wrvq36indzch&st=5gi6pl5a&dl=0", "She Notice", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/f48q4qlz8gtogz74jp4a9/All-Over.mp3?rlkey=g2ycju9242og28d5ogt25qa5c&st=tatj0h4w&dl=0", "All Over", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/dhrizj0fgk25xfo24n0ng/Twerk-It.mp3?rlkey=gz765gv4dzanwktr0g2jzpeqf&st=r7he532p&dl=0", "Twerk It", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/tbfkb1wffpk2u1eoece6s/Phoenix.mp3?rlkey=5tig2ed2ithgfyo6bit18vels&st=rytjendh&dl=0", "Phoenix", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/yq4gswdsjbw93xths6tvf/I-ll-Tell-You-What.mp3?rlkey=7i68ynbp9k22t67w2cuol9r3k&st=8ymm6hea&dl=0", "I'll Tell You What", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/u5mad4rtuufiisagubc7t/Mind-Right.mp3?rlkey=jap6a2sjmwrqclhj9qo9hxvuu&st=stxpooth&dl=0", "Mind Right", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/v26nia0d8atfig3s9uywm/Go-Crazy.mp3?rlkey=k49mdudsc3fkasnza4d7qidxe&st=ca108lvm&dl=0", "Go Crazy", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/1uetu5hnkw31g55pmickl/Pull-Up-On-A-Kid.mp3?rlkey=q0mdtrby86nw7ea0ia7phleat&st=18vx2sf4&dl=0", "Pull Up On A Kid", "Young Thug, Yak Gotti", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/wmywj5xsm395bumugex2q/Up.mp3?rlkey=q5lz5unrw217gm761sbzw15yg&st=arl3uduy&dl=0", "Up", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/5flpeesnl9l40dl0ulhe1/Bout-Damn-Time.mp3?rlkey=aihdxjvubnyry8fp2cfi8q1dh&st=1jz44f4z&dl=0", "Bout (Damn) Time", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/tz80gy891ie6bwbpzfws2/Flaws.mp3?rlkey=ziafjjpm9ws4ddd38qjyz7qxh&st=pucd9fmm&dl=0", "Flaws", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/18kvoa4ujbn1ojv8uyzia/Oh-Lord.mp3?rlkey=hc5bsx3kkbbhcnizuuyv8bs2l&st=8k237ksu&dl=0", "Oh Lord", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/tiwc2mr3cfrub7nl6vn48/Beast.mp3?rlkey=h4dbzcbwni5r848jmb4hrysdi&st=arzxzz8p&dl=0", "Beast", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/tf6ene2xg776nfx39sio1/Never-Made-Love.mp3?rlkey=2cgke502bof1k8e2br7whey7o&st=yl3s4l1j&dl=0", "Never Made Love", "Young Thug, Rich Homie Quan", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/69impll2kb0qsf6x91im9/Raw-Might-Just.mp3?rlkey=xvuyg9iry4c8gegph1ma1jt63&st=alb7w0s8&dl=0", "Raw (Might Just)", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/dc4a92d79pa051b6bhnax/No-No-No.mp3?rlkey=j799cc2alobfevcbtid9fwuv8&st=bwtkf23g&dl=0", "No No No", "Young Thug, Birdman", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/hrbttepkgtw5tl5afn2ho/My-Baby.mp3?rlkey=hu41g8lm2f2yftsj92ayu2sru&st=jka2gwl9&dl=0", "My Baby", "Young Thug", ss2_image],
+        ["https://dl.dropbox.com/scl/fi/gr2ubndnwyfwjipyeddnn/Love-Me-Forever-Chopped-Screwed.mp3?rlkey=4af7h9dr9f5ejv7lugzsdwj79&st=lpbbk059&dl=0", "Love Me Forever (Chopped & Screwed)", "Young Thug", ss2_image],
+    ],
 ]
 
 let liked = [
@@ -290,6 +315,7 @@ let info = [
     ["Future Hndrxx Presents: The WIZRD", "Future", "2019", "Album", "rgb(163, 59, 15)", wizrd_image],
     ["Warboy", "Sematary", "2020", "EP", "rgb(179, 52, 64)", warboy_image],
     ["Grave House", "Sematary, Ghost Mountain", "2019", "Album", "rgb(122, 5, 17)", grave_house_image],
+    ["Slime Season 2", "Young Thug", "2015", "Album", "rgb(64, 5, 5)", ss2_image],
 ]
 
 let combined = info.map((item, index) => {
@@ -560,7 +586,9 @@ function likeSong(){
         if (list == liked){
             updateSongs()
             addButton()
+        }
 
+        if (index == liked){
             if (liked.length == 0){
                 currentSong.pause()
                 currentSong.currentTime = 0
