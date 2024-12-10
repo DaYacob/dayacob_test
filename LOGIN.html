@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+
+        <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCUNz4G0i-H63ukOOlTgcSAmYVh-yCEWEw",
+            authDomain: "dayacob-music.firebaseapp.com",
+            projectId: "dayacob-music",
+            storageBucket: "dayacob-music.firebasestorage.app",
+            messagingSenderId: "754686380975",
+            appId: "1:754686380975:web:c0743c7f1e26f12c5e7d5a",
+            measurementId: "G-V932XV9BRQ"
+        }
+
+        firebase.initializeApp(firebaseConfig)
+
+        </script>
+
+        <script>
+        function checkAuthState(){
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user){
+                    window.location.href = "./HTML.html"
+                }
+            })
+        }
+
+        function login(){
+            var email = document.getElementById("login-email").value
+            var password = document.getElementById("login-password").value
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(function() {
+                window.location.href = "./HTML.html"
+            })
+            .catch(function(error) {
+                var errorCode = error.code
+                var errorMessage = error.message
+                console.log("Login error:", errorCode, errorMessage)
+            })
+        }
+
+        function signup(){
+            var email = document.getElementById("signup-email").value
+            var password = document.getElementById("signup-password").value
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function() {
+                window.location.href = "./HTML.html"
+            })
+            .catch(function(error) {
+                var errorCode = error.code
+                var errorMessage = error.message
+                console.log("Login error:", errorCode, errorMessage)
+            })
+        }
+        </script>
+    </head>
+    <body onload="checkAuthState()">
+        <h1>THIS IS A TEST LOGGING IN AND SIGNING UP SYSTEM, YOU CAN PUT FAKE EMAILS THAT FOLLOW THE FORMAT, BUT REMEMBER YOUR PASSWORD TO THAT EMAIL, PROGRESS DOES NOT SAVE, IF EITHER BUTTON IS NOT WORKING CHECK THE OUTPUT IN THE CONSOLE</h1>
+
+        <h3>Log In</h3>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="login-email" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="login-password" required><br><br>
+            <button type="button" onclick="login()">Log In</button>
+        </form>
+        <br>
+        <h3>Sign Up</h3>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="signup-email" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="signup-password" required><br><br>
+            <button type="button" onclick="signup()">Sign Up</button>
+        </form>
+    </body>
+</html>
