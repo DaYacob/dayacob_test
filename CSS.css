@@ -31,6 +31,22 @@
     align-items: center;
 }
 
+.top button{
+    background-color: rgb(8, 8, 8);
+    position: fixed;
+    left: 0;
+    height: 5%;
+    width: 10%;
+    transform: translateX(25%);
+    border: 2px solid, black;
+    display: grid;
+    overflow: auto;
+    z-index: 3;
+    font-size: 3.5vh;
+    text-align: center;
+    color: gray;
+}
+
 #search-bar{
     background-color: rgb(8, 8, 8);
     position: fixed;
