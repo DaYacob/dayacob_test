@@ -837,6 +837,38 @@ function previousSong(){
     }
 }
 
+function signout(){
+    firebase.auth().signOut()
+    .then(function(){
+        window.location.href = "./LOGIN.html"
+    })
+    .catch(function(error) {
+        console.error("Error during signout: ", error)
+    })
+}
+
+var firebaseConfig = {
+    apiKey: "AIzaSyCUNz4G0i-H63ukOOlTgcSAmYVh-yCEWEw",
+    authDomain: "dayacob-music.firebaseapp.com",
+    projectId: "dayacob-music",
+    storageBucket: "dayacob-music.firebasestorage.app",
+    messagingSenderId: "754686380975",
+    appId: "1:754686380975:web:c0743c7f1e26f12c5e7d5a",
+    measurementId: "G-V932XV9BRQ"
+}
+
+firebase.initializeApp(firebaseConfig)
+
+function checkAuthState() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (!user) {
+            window.location.href = "./LOGIN.html"
+        }
+    })
+}
+
+checkAuthState()
+
 document.body.onkeyup = function(event){
     if (event.key === " ") {
         const activeElement = document.activeElement
